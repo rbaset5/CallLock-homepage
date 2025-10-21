@@ -19,16 +19,9 @@ export function Hero() {
             transition={{ duration: 0.8 }}
             className="text-center lg:text-left"
           >
-            {/* Main Headline - Updated Layout - Force Refresh v2 */}
+            {/* Main Headline */}
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-trust mb-6 leading-none">
-              <div className="block mb-1 md:mb-2 lg:mb-3 whitespace-nowrap">Answering services</div>
-              <div className="block mb-1 md:mb-2 lg:mb-3">cut costs.</div>
-              <div className="block mb-1 md:mb-2 lg:mb-3 whitespace-nowrap">
-                <span className="text-gradient">CallLock recovers</span>
-              </div>
-              <div className="block">
-                <span className="text-gradient">revenue.</span>
-              </div>
+              Convert Your Missed Calls
             </h1>
 
             {/* Sub-headline */}
@@ -98,33 +91,37 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right Column - Hero Mockup */}
+          {/* Right Column - Hero Image */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="hidden lg:block"
           >
-            <Placeholder
-              aspectRatio="16:9"
-              text="Hero Composite Mockup (iPhone left, iPad/Desktop right)"
-              variant="desktop"
-            />
+            <div className="relative">
+              <img
+                src="/hero-missed-call.png"
+                alt="Woman holding smartphone with missed call notification"
+                className="w-full h-auto rounded-lg shadow-2xl"
+              />
+            </div>
           </motion.div>
         </div>
 
-        {/* Mobile Hero Mockup */}
+        {/* Mobile Hero Image */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
           className="lg:hidden mt-12"
         >
-          <Placeholder
-            aspectRatio="16:9"
-            text="Hero Composite Mockup (iPhone left, iPad/Desktop right)"
-            variant="desktop"
-          />
+          <div className="relative">
+            <img
+              src="/hero-missed-call.png"
+              alt="Woman holding smartphone with missed call notification"
+              className="w-full h-auto rounded-lg shadow-2xl"
+            />
+          </div>
         </motion.div>
       </div>
     </section>

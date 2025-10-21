@@ -4,14 +4,45 @@ import React from 'react'
 import { Section } from '@/components/ui/Section'
 import { Card } from '@/components/ui/Card'
 import { HeadsetIcon, ChartIcon } from '@/components/ui/Icons'
+import { WordPullUp } from '@/components/ui/word-pull-up'
 
 export function Positioning() {
   return (
-    <Section className="bg-bg">
+    <Section className="bg-white">
       <div className="text-center max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-5xl font-bold text-trust mb-12">
-          Where do your missed calls go? You have two choices.
-        </h2>
+        <div className="mb-12">
+          <WordPullUp
+            words="Where do your missed calls go?"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-trust mb-6 leading-none"
+          />
+          <WordPullUp
+            words="You have two choices."
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-trust leading-none"
+            wrapperFramerProps={{
+              hidden: { opacity: 0 },
+              show: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.1,
+                  delay: 0.5,
+                },
+              },
+            }}
+            framerProps={{
+              hidden: { y: 20, opacity: 0 },
+              show: { y: 0, opacity: 1 },
+            }}
+          />
+        </div>
+
+        {/* Fork Diagram Image */}
+        <div className="flex justify-center mb-12">
+          <img
+            src="/fork-diagram.png"
+            alt="Fork diagram showing missed call paths to Answering Service vs CallLock"
+            className="max-w-[600px] w-full px-5 md:px-0"
+          />
+        </div>
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           {/* Answering Service Column */}

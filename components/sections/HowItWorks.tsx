@@ -12,26 +12,17 @@ export function HowItWorks() {
   const steps = [
     {
       number: '1',
-      title: 'Instantly Engage the Lead (≤30s)',
+      title: 'Instantly Engage the Lead in 5 seconds!',
       description: 'A missed call triggers a branded text from your number, starting a professional intake process that stops the customer from calling your competitor.'
-    },
-    {
-      number: '2', 
-      title: 'Qualify with Proof',
-      description: 'Our mobile intake gathers what message-taking can\'t: photos of the problem, service address, and urgency. You get a complete lead sheet, not just a name and number.'
-    },
-    {
-      number: '3',
-      title: 'Secure the Opportunity', 
-      description: 'For qualified leads, offer a booking window synced to your calendar—or get an instant alert to call them back immediately. The result is a qualified opportunity, ready to close.'
     }
   ]
 
   return (
     <Section id="how-it-works" className="bg-white">
-      <div className="text-center max-w-6xl mx-auto">
+      <div className="text-center max-w-7xl mx-auto px-8">
         <h2 className="text-3xl md:text-5xl font-bold text-trust mb-12">
-          How CallLock Recovers Your Revenue
+          We Text Your Missed Callers Back In 5 Seconds.<br />
+          Then Book Them Into Your Calendar.
         </h2>
 
         <div className="space-y-16 mb-12">
@@ -42,12 +33,12 @@ export function HowItWorks() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className={`grid lg:grid-cols-2 gap-8 items-center ${
+              className={`grid lg:grid-cols-5 gap-8 lg:gap-10 items-center ${
                 index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
               }`}
             >
               {/* Text Content */}
-              <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
+              <div className={`lg:col-span-2 ${index % 2 === 1 ? 'lg:col-start-4 lg:pl-8' : 'lg:pr-8'}`}>
                 <Card className="text-center lg:text-left h-full">
                   <div className="w-16 h-16 bg-action text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto lg:mx-0 mb-6">
                     {step.number}
@@ -62,28 +53,12 @@ export function HowItWorks() {
               </div>
 
               {/* Mockup */}
-              <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
-                {index === 0 && (
-                  <Placeholder
-                    aspectRatio="9:16"
-                    text="Mockup: Initial Text-Back"
-                    variant="phone"
-                  />
-                )}
-                {index === 1 && (
-                  <Placeholder
-                    aspectRatio="9:16"
-                    text="Mockup: Photo Upload"
-                    variant="phone"
-                  />
-                )}
-                {index === 2 && (
-                  <Placeholder
-                    aspectRatio="4:3"
-                    text="Mockup: Weekly Report Email"
-                    variant="desktop"
-                  />
-                )}
+              <div className={`lg:col-span-3 ${index % 2 === 1 ? 'lg:col-start-1 lg:pr-2' : 'lg:pl-2'}`}>
+                <img
+                  src="/how-it-works-1.png"
+                  alt="SMS conversation showing instant text engagement with ABC Plumbing"
+                  className="w-full max-w-4xl mx-auto rounded-lg shadow-2xl lg:max-w-none lg:w-full lg:ml-auto lg:mr-0"
+                />
               </div>
             </motion.div>
           ))}
