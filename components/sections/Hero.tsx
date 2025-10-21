@@ -21,7 +21,7 @@ export function Hero() {
           >
             {/* Main Headline */}
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-trust mb-6 leading-none">
-              Convert Your Missed Calls
+              Stop Losing Prospects to Missed Calls
             </h1>
 
             {/* Sub-headline */}
