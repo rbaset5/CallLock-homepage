@@ -46,13 +46,13 @@ export function ProofSection() {
 
         {/* CTA Box */}
         <div className="text-center">
-          <div className="bg-action/10 border-2 border-action/20 rounded-lg p-8 max-w-2xl mx-auto">
-            <p className="text-lg md:text-xl font-semibold text-trust mb-4">
+          <div className="bg-action/10 border-2 border-action/20 rounded-lg p-4 sm:p-6 md:p-8 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl font-semibold text-trust mb-4">
               Experience this flow yourself. Call our live demo at
             </p>
             <a 
               href={`tel:${demoPhone.replace(/[^\d]/g, '')}`}
-              className="text-2xl md:text-3xl font-bold text-action hover:text-action/80 transition-colors duration-200"
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-action hover:text-action/80 transition-colors duration-200"
             >
               {demoPhone}
             </a>
@@ -61,13 +61,19 @@ export function ProofSection() {
 
         {/* Send Me a Missed-Call Text Back CTA Button */}
         <div className="text-center mt-8">
-          <Button 
-            variant="primary" 
-            size="lg" 
-            className="text-lg px-8 py-4"
+          <button
+            className="inline-flex items-center justify-center rounded-md text-lg font-semibold px-8 py-4 shadow-lg hover:shadow-xl transition-all duration-200"
+            style={{
+              backgroundColor: '#10b981',
+              color: '#ffffff',
+              border: 'none',
+              cursor: 'pointer'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#059669'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#10b981'}
           >
             Send To My Phone Instead!
-          </Button>
+          </button>
         </div>
       </div>
     </Section>

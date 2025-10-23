@@ -118,7 +118,7 @@ export function CallLockProcessFlow() {
             transition={{ duration: 0.6, delay: index * 0.1 }}
           >
             <motion.div
-              className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 bg-white rounded-full flex items-center justify-center text-2xl md:text-3xl shadow-lg relative"
+              className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 lg:w-24 lg:h-24 mx-auto mb-4 bg-white rounded-full flex items-center justify-center text-2xl sm:text-3xl md:text-4xl shadow-lg relative"
               animate={{
                 scale: currentStep === index ? 1.15 : 1,
                 backgroundColor: currentStep === index ? '#1e3a8a' : '#ffffff',
@@ -146,7 +146,7 @@ export function CallLockProcessFlow() {
             </motion.div>
 
             <motion.h3
-              className="text-sm md:text-base font-semibold mb-2"
+              className="text-sm sm:text-base md:text-lg font-semibold mb-2"
               animate={{
                 color: currentStep === index ? '#1e3a8a' : '#374151'
               }}
@@ -156,7 +156,7 @@ export function CallLockProcessFlow() {
             </motion.h3>
 
             <motion.p
-              className="text-xs md:text-sm text-gray-600 leading-relaxed max-w-32 mx-auto"
+              className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed max-w-40 sm:max-w-48 md:max-w-56 mx-auto"
               animate={{
                 opacity: currentStep === index ? 1 : 0.7
               }}

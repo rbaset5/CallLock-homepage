@@ -44,7 +44,7 @@ export function Hero() {
               </p>
               <a 
                 href={`tel:${demoPhone.replace(/[^\d]/g, '')}`}
-                className="text-2xl md:text-3xl font-bold text-action hover:text-action/80 transition-colors duration-200"
+                className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-action hover:text-action/80 transition-colors duration-200"
               >
                 Call Our Instant Demo: {demoPhone}
               </a>
