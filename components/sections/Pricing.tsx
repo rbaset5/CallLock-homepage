@@ -21,6 +21,7 @@ export function Pricing() {
         "See all missed calls in dashboard",
         "Basic AI conversation",
         "Setup done in 48 hours",
+        "Dashboard for tracking Return on Investment",
       ],
       cta: "Book Demo",
     },
