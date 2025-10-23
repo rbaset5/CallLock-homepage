@@ -4,6 +4,7 @@ import React from 'react'
 import { Section } from '@/components/ui/Section'
 import { Card } from '@/components/ui/Card'
 import { Placeholder } from '@/components/ui/Placeholder'
+import { LightningBoltIcon } from '@/components/ui/Icons'
 import { motion } from 'framer-motion'
 
 export function HowItWorks() {
@@ -40,8 +41,8 @@ export function HowItWorks() {
               {/* Text Content */}
               <div className={`lg:col-span-2 ${index % 2 === 1 ? 'lg:col-start-4 lg:pl-8' : 'lg:pr-8'}`}>
                 <Card className="text-center lg:text-left h-full">
-                  <div className="w-16 h-16 bg-action text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto lg:mx-0 mb-6">
-                    {step.number}
+                  <div className="w-16 h-16 bg-action text-white rounded-full flex items-center justify-center mx-auto lg:mx-0 mb-6">
+                    <LightningBoltIcon className="w-8 h-8" />
                   </div>
                   <h3 className="text-xl font-bold text-trust mb-4">
                     {step.title}
@@ -57,7 +58,7 @@ export function HowItWorks() {
                 <img
                   src="/how-it-works-1.png"
                   alt="SMS conversation showing instant text engagement with ABC Plumbing"
-                  className="w-full max-w-4xl mx-auto rounded-lg shadow-2xl lg:max-w-none lg:w-full lg:ml-auto lg:mr-0"
+                  className="w-full max-w-4xl mx-auto rounded-lg lg:max-w-none lg:w-full lg:ml-auto lg:mr-0"
                 />
               </div>
             </motion.div>

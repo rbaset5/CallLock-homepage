@@ -4,6 +4,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/Button'
 import { Placeholder } from '@/components/ui/Placeholder'
+import { CallLockProcessFlow } from '@/components/ui/CallLockProcessFlow'
 
 export function Hero() {
   const demoPhone = process.env.NEXT_PUBLIC_DEMO_PHONE || '(###) ###-####'
@@ -26,7 +27,6 @@ export function Hero() {
 
             {/* Sub-headline */}
             <div className="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto lg:mx-0 leading-relaxed">
-              <p className="mb-4">Stop losing your best leads to voicemail.</p>
               <p>Our intelligent text-back system engages 
               every missed call in 30 seconds, captures the job details (with photos), and gives 
               you a chance to win the revenue your competitors are scooping up.</p>
@@ -91,7 +91,7 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right Column - Hero Image */}
+          {/* Right Column - Process Flow Diagram */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -99,16 +99,12 @@ export function Hero() {
             className="hidden lg:block"
           >
             <div className="relative">
-              <img
-                src="/hero-missed-call.png"
-                alt="Woman holding smartphone with missed call notification"
-                className="w-full h-auto rounded-lg shadow-2xl"
-              />
+              <CallLockProcessFlow />
             </div>
           </motion.div>
         </div>
 
-        {/* Mobile Hero Image */}
+        {/* Mobile Process Flow Diagram */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -116,11 +112,7 @@ export function Hero() {
           className="lg:hidden mt-12"
         >
           <div className="relative">
-            <img
-              src="/hero-missed-call.png"
-              alt="Woman holding smartphone with missed call notification"
-              className="w-full h-auto rounded-lg shadow-2xl"
-            />
+            <CallLockProcessFlow />
           </div>
         </motion.div>
       </div>

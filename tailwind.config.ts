@@ -9,11 +9,47 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        trust: '#0A2540',
-        action: '#00D084',
+        // CallLock brand colors - Updated color scheme
+        trust: '#1e3a8a', // Navy blue for headlines
+        action: '#10B981', // Green for buttons/CTAs
         bg: '#F6F9FC',
-        text: '#1A1F36',
-        border: '#E6E6E6',
+        text: '#374151', // Dark gray for body text
+        'text-secondary': '#6B7280', // Medium gray for secondary text
+        'text-light': '#9CA3AF', // Light gray for footer
+        // Shadcn theme colors
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -36,6 +72,9 @@ const config: Config = {
           '0%': { opacity: '0', transform: 'translateY(10px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
+      },
+      maskImage: {
+        'radial-gradient': 'radial-gradient(var(--tw-gradient-stops))',
       },
     },
   },

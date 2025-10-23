@@ -47,9 +47,9 @@ export function Positioning() {
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           {/* Answering Service Column */}
           <Card className="text-left">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-bg to-trust/10 border-2 border-border rounded-full flex items-center justify-center">
-                <HeadsetIcon className="w-6 h-6 text-trust" />
+            <div className="text-center mb-6">
+              <div className="w-16 h-16 bg-action text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                A
               </div>
               <h3 className="text-2xl font-bold text-trust">
                 Choose an Answering Service if…
@@ -77,9 +77,9 @@ export function Positioning() {
 
           {/* CallLock Column */}
           <Card className="text-left border-2 border-action/20 bg-gradient-to-br from-action/5 to-transparent">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-action/10 to-trust/10 border-2 border-action/20 rounded-full flex items-center justify-center">
-                <ChartIcon className="w-6 h-6 text-action" />
+            <div className="text-center mb-6">
+              <div className="w-16 h-16 bg-action text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                B
               </div>
               <h3 className="text-2xl font-bold text-trust">
                 Choose CallLock if…

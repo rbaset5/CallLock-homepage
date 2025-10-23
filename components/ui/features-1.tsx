@@ -3,9 +3,9 @@ import { ReactNode } from 'react'
 
 export function Features() {
     return (
-        <div className="bg-white py-16 md:py-32">
+        <div className="bg-white py-8 md:py-16">
             <div className="@container mx-auto max-w-5xl px-6">
-                <div className="@min-4xl:max-w-full @min-4xl:grid-cols-3 mx-auto mt-8 grid max-w-sm gap-6 *:text-center md:mt-16">
+                <div className="mx-auto mt-8 grid grid-cols-1 md:grid-cols-3 max-w-5xl gap-4 *:text-center md:mt-16">
                     <Card className="group shadow-black-950/5">
                         <CardHeader className="pb-3">
                             <CardDecorator>
@@ -13,6 +13,7 @@ export function Features() {
                             </CardDecorator>
 
                             <h3 className="mt-6 font-medium">20-min call</h3>
+                            <div className="text-3xl mt-2">📞</div>
                         </CardHeader>
 
                         <CardContent>
@@ -27,6 +28,7 @@ export function Features() {
                             </CardDecorator>
 
                             <h3 className="mt-6 font-medium">48 hours</h3>
+                            <div className="text-3xl mt-2">🕐</div>
                         </CardHeader>
 
                         <CardContent>
@@ -41,6 +43,7 @@ export function Features() {
                             </CardDecorator>
 
                             <h3 className="mt-6 font-medium">Forward your line</h3>
+                            <div className="text-3xl mt-2">📅💰</div>
                         </CardHeader>
 
                         <CardContent>

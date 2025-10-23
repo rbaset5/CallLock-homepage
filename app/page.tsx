@@ -1,8 +1,8 @@
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { Hero } from '@/components/sections/Hero'
+import { ProofSection } from '@/components/sections/ProofSection'
 import { Positioning } from '@/components/sections/Positioning'
-import { HowItWorks } from '@/components/sections/HowItWorks'
 import { ROI } from '@/components/sections/ROI'
 import { DoneForYou } from '@/components/sections/DoneForYou'
 import { Pricing } from '@/components/sections/Pricing'
@@ -14,7 +14,7 @@ export default function Home() {
     <main className="min-h-screen">
       <Header />
       <Hero />
-      <HowItWorks />
+      <ProofSection />
       <Positioning />
       <ROI />
       <DoneForYou />

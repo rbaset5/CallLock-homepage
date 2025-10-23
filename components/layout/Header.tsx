@@ -31,7 +31,11 @@ export function Header() {
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-trust">CallLock</h1>
+            <img 
+              src="/logo.png" 
+              alt="CallLock" 
+              className="w-32 h-auto"
+            />
           </div>
 
           {/* Navigation */}

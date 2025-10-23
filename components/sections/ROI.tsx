@@ -4,6 +4,7 @@ import React from 'react'
 import { Section } from '@/components/ui/Section'
 import { Placeholder } from '@/components/ui/Placeholder'
 import { motion } from 'framer-motion'
+import { Button } from '@/components/ui/Button'
 
 export function ROI() {
   return (
@@ -60,20 +61,20 @@ export function ROI() {
 
             {/* Right Column - ROI Infographic */}
             <div className="hidden lg:block">
-              <Placeholder
-                aspectRatio="1:1"
-                text="ROI Infographic Card"
-                variant="default"
+              <img
+                src="/ROI-image.png"
+                alt="ROI Infographic showing revenue recovery calculations"
+                className="w-full h-auto rounded-lg"
               />
             </div>
           </div>
 
           {/* Mobile ROI Infographic */}
           <div className="lg:hidden mt-8">
-            <Placeholder
-              aspectRatio="1:1"
-              text="ROI Infographic Card"
-              variant="default"
+            <img
+              src="/ROI-image.png"
+              alt="ROI Infographic showing revenue recovery calculations"
+              className="w-full h-auto rounded-lg"
             />
           </div>
 
@@ -87,6 +88,23 @@ export function ROI() {
             <p className="text-xl md:text-2xl font-bold text-trust">
               One saved job a month doesn't just pay for CallLock—it can fund it for the entire year.
             </p>
+          </motion.div>
+
+          {/* CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            viewport={{ once: true }}
+            className="mt-8 text-center"
+          >
+            <Button 
+              variant="primary" 
+              size="lg" 
+              className="text-lg px-8 py-4"
+            >
+                  Calculate My Potential ROI
+            </Button>
           </motion.div>
         </motion.div>
       </div>
