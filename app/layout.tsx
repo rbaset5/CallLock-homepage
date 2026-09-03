@@ -1,14 +1,19 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { IBM_Plex_Sans } from 'next/font/google'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/react'
 
-const inter = Inter({ subsets: ['latin'] })
+const ibmPlexSans = IBM_Plex_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-sans',
+})
 
 export const metadata: Metadata = {
-  title: 'CallLock | Missed-Call Revenue Recovery for Service Businesses',
-  description: 'Stop losing jobs to voicemail. CallLock\'s intelligent text-back system captures, qualifies, and converts every missed call into a high-value opportunity. See it in action.',
-  keywords: 'missed call recovery, lead capture, service business, text back system, revenue recovery',
+  title: 'CallLock private preview | Storm-roof intake and evidence packet',
+  description:
+    'Private preview for insurance-storm roofing owners and operators. Storm-roof intake that builds an evidence packet. Live calllock.co is unchanged.',
   authors: [{ name: 'CallLock' }],
   creator: 'CallLock',
   publisher: 'CallLock',
@@ -17,42 +22,21 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://calllock.com'),
-  alternates: {
-    canonical: '/',
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
   },
   openGraph: {
-    title: 'CallLock | Missed-Call Revenue Recovery for Service Businesses',
-    description: 'Stop losing jobs to voicemail. CallLock\'s intelligent text-back system captures, qualifies, and converts every missed call into a high-value opportunity.',
-    url: 'https://calllock.com',
+    title: 'CallLock private preview',
+    description:
+      'Private preview for insurance-storm roofing owners and operators. Live calllock.co is unchanged.',
     siteName: 'CallLock',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'CallLock - Missed-Call Revenue Recovery',
-      },
-    ],
     locale: 'en_US',
     type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'CallLock | Missed-Call Revenue Recovery for Service Businesses',
-    description: 'Stop losing jobs to voicemail. CallLock\'s intelligent text-back system captures, qualifies, and converts every missed call into a high-value opportunity.',
-    images: ['/og-image.jpg'],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
   },
 }
 
@@ -62,8 +46,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={inter.className}>
+    <html lang="en" className={`${ibmPlexSans.variable} scroll-smooth`}>
+      <body className={`${ibmPlexSans.className} bg-stone-50 text-stone-800 antialiased dark:bg-stone-950 dark:text-stone-100`}>
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-trust focus:shadow"
+        >
+          Skip to main content
+        </a>
         {children}
         <Analytics />
       </body>

@@ -1,53 +1,34 @@
-import React from 'react'
-import { Button } from '@/components/ui/Button'
+import { PhoneCta } from '@/components/ui/PhoneCta'
 
 export function Footer() {
   return (
-    <footer className="bg-trust text-white">
-      <div className="container-max section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Brand */}
-          <div className="md:col-span-2">
-            <h3 className="text-2xl font-bold mb-4">CallLock</h3>
-            <p className="text-gray-300 mb-6 max-w-md">
-              Stop losing your best leads to voicemail. Our intelligent text-back system 
-              engages every missed call and recovers revenue your competitors are scooping up.
+    <footer className="border-t border-stone-300 bg-stone-100 text-stone-700 dark:border-stone-800 dark:bg-stone-950 dark:text-stone-300">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr]">
+          <div>
+            <p className="text-lg font-semibold text-trust dark:text-stone-100">
+              CallLock
             </p>
-            <div className="flex space-x-4">
-              <Button variant="primary" size="sm">
-                Start Free Pilot
-              </Button>
-              <Button variant="outline" size="sm" className="border-white text-white hover:bg-white hover:text-trust">
-                Book Demo
-              </Button>
+            <p className="mt-3 max-w-[65ch] text-sm leading-relaxed">
+              Storm-roof intake and an evidence packet for insurance-storm
+              roofing owners and operators. This page is a private preview.
+            </p>
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-trust dark:text-stone-100">
+              Call Rashid
+            </p>
+            <p className="mt-3 text-sm leading-relaxed">
+              Google Voice is not assigned. The control below does not dial.
+            </p>
+            <div className="mt-4">
+              <PhoneCta size="sm" />
             </div>
           </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-semibold mb-4">Product</h4>
-            <ul className="space-y-2 text-gray-300">
-              <li><a href="#how-it-works" className="hover:text-white transition-colors">How It Works</a></li>
-              <li><a href="#pricing" className="hover:text-white transition-colors">Pricing</a></li>
-              <li><a href="#faq" className="hover:text-white transition-colors">FAQ</a></li>
-            </ul>
-          </div>
-
-          {/* Support */}
-          <div>
-            <h4 className="font-semibold mb-4">Support</h4>
-            <ul className="space-y-2 text-gray-300">
-              <li><a href="#" className="hover:text-white transition-colors">Help Center</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Contact Us</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Terms of Service</a></li>
-            </ul>
-          </div>
         </div>
-
-        <div className="border-t border-gray-600 mt-12 pt-8 text-center text-gray-300">
-          <p>&copy; 2024 CallLock. All rights reserved.</p>
-        </div>
+        <p className="mt-10 text-xs text-stone-500">
+          © 2026 CallLock. Private preview. Not the live site.
+        </p>
       </div>
     </footer>
   )

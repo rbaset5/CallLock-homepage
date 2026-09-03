@@ -1,27 +1,27 @@
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { Hero } from '@/components/sections/Hero'
-import { ProofSection } from '@/components/sections/ProofSection'
-import { Positioning } from '@/components/sections/Positioning'
-import { ROI } from '@/components/sections/ROI'
-import { DoneForYou } from '@/components/sections/DoneForYou'
-import { Pricing } from '@/components/sections/Pricing'
-import { FAQ } from '@/components/sections/FAQ'
-import { FinalCTA } from '@/components/sections/FinalCTA'
+import { MissedCallProblem } from '@/components/sections/MissedCallProblem'
+import { PacketWalkthrough } from '@/components/sections/PacketWalkthrough'
+import { FourStepFlow } from '@/components/sections/FourStepFlow'
+import { WhoItsFor } from '@/components/sections/WhoItsFor'
+import { TrialOffer } from '@/components/sections/TrialOffer'
+import { CallRashid } from '@/components/sections/CallRashid'
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <>
       <Header />
-      <Hero />
-      <ProofSection />
-      <Positioning />
-      <ROI />
-      <DoneForYou />
-      <Pricing />
-      <FAQ />
-      <FinalCTA />
+      <main id="main">
+        <Hero />
+        <MissedCallProblem />
+        <PacketWalkthrough />
+        <FourStepFlow />
+        <WhoItsFor />
+        <TrialOffer />
+        <CallRashid />
+      </main>
       <Footer />
-    </main>
+    </>
   )
 }
