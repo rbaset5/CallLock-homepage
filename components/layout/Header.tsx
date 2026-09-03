@@ -7,10 +7,10 @@ import { zIndex } from '@/lib/z-index'
 import { cn } from '@/lib/utils'
 
 const nav = [
-  { href: '#problem', label: 'Missed calls' },
+  { href: '#problem', label: 'Problem' },
   { href: '#packet', label: 'Packet' },
   { href: '#flow', label: 'Flow' },
-  { href: '#trial', label: '$0 for 90 days' },
+  { href: '#trial', label: 'Trial' },
   { href: '#call-rashid', label: 'Call Rashid' },
 ]
 
@@ -49,16 +49,18 @@ export function Header() {
           Private preview. Live calllock.co is unchanged.
         </p>
         <div className="mx-auto flex max-h-16 max-w-7xl items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:px-8">
-          <a href="#top" className="flex items-center gap-3">
-            <Image
-              src="/logo.png"
-              alt="CallLock"
-              width={160}
-              height={48}
-              priority
-              className="h-10 w-auto"
-            />
-            <span className="hidden text-xs text-stone-500 sm:inline">
+          <a href="#top" className="flex min-w-0 items-center gap-3">
+            <span className="rounded-md bg-zinc-950 px-2 py-1">
+              <Image
+                src="/logo.png"
+                alt="CallLock"
+                width={160}
+                height={48}
+                priority
+                className="h-8 w-auto"
+              />
+            </span>
+            <span className="hidden text-xs text-stone-500 xl:inline">
               Private preview
             </span>
           </a>
@@ -75,7 +77,7 @@ export function Header() {
             ))}
           </nav>
 
-          <div className="hidden lg:block">
+          <div className="hidden xl:block">
             <PhoneCta size="sm" />
           </div>
 

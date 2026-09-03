@@ -36,7 +36,7 @@ export function Hero() {
             <PhoneCta />
             <a
               href="#packet"
-              className="inline-flex min-h-12 items-center justify-center rounded-md border border-stone-300 bg-white px-4 text-sm font-semibold text-trust transition-transform hover:bg-stone-100 active:scale-[0.98] dark:border-stone-600 dark:bg-stone-900 dark:text-stone-100 dark:hover:bg-stone-800"
+              className="inline-flex min-h-12 items-center justify-center rounded-md border border-trust bg-white px-4 text-sm font-semibold text-trust transition-transform hover:bg-stone-100 active:scale-[0.98] dark:border-stone-200 dark:bg-stone-900 dark:text-stone-100 dark:hover:bg-stone-800"
             >
               See the packet
             </a>
