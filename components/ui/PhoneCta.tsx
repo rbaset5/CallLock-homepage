@@ -1,14 +1,11 @@
 'use client'
 
 import { GOOGLE_VOICE_PENDING_LABEL } from '@/lib/content'
-import {
-  assignedGoogleVoiceNumber,
-  formatDialableNumber,
-  toE164,
-} from '@/lib/phone'
+import { formatDialableNumber, toE164 } from '@/lib/phone'
 import { cn } from '@/lib/utils'
 
 type PhoneCtaProps = {
+  assignedDigits: string | null
   className?: string
   size?: 'sm' | 'lg'
 }
@@ -25,14 +22,17 @@ const liveClassName = [
   'active:scale-[0.98]',
 ].join(' ')
 
-export function PhoneCta({ className, size = 'lg' }: PhoneCtaProps) {
-  const assigned = assignedGoogleVoiceNumber()
+export function PhoneCta({
+  assignedDigits,
+  className,
+  size = 'lg',
+}: PhoneCtaProps) {
   const sizeClass =
     size === 'lg'
       ? 'min-h-12 py-3 text-xs sm:text-sm md:text-base'
       : 'min-h-9 py-2 text-xs sm:text-sm'
 
-  if (!assigned) {
+  if (!assignedDigits) {
     return (
       <button
         type="button"
@@ -48,10 +48,12 @@ export function PhoneCta({ className, size = 'lg' }: PhoneCtaProps) {
 
   return (
     <a
-      href={`tel:${toE164(assigned)}`}
+      href={`tel:${toE164(assignedDigits)}`}
       className={cn(liveClassName, sizeClass, className)}
     >
-      <span className="text-center">{formatDialableNumber(assigned)}</span>
+      <span className="text-center">
+        {formatDialableNumber(assignedDigits)}
+      </span>
     </a>
   )
 }

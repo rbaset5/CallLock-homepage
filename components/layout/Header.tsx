@@ -14,7 +14,11 @@ const nav = [
   { href: '#call-rashid', label: 'Call Rashid' },
 ]
 
-export function Header() {
+type HeaderProps = {
+  assignedDigits: string | null
+}
+
+export function Header({ assignedDigits }: HeaderProps) {
   const sentinelRef = useRef<HTMLDivElement>(null)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -78,7 +82,7 @@ export function Header() {
           </nav>
 
           <div className="hidden lg:block">
-            <PhoneCta size="sm" />
+            <PhoneCta assignedDigits={assignedDigits} size="sm" />
           </div>
 
           <button
@@ -128,7 +132,7 @@ export function Header() {
               ))}
             </nav>
             <div className="mt-4">
-              <PhoneCta size="sm" className="w-full" />
+              <PhoneCta assignedDigits={assignedDigits} size="sm" className="w-full" />
             </div>
           </div>
         ) : null}

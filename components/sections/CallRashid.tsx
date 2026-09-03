@@ -1,10 +1,11 @@
 import { PhoneCta } from '@/components/ui/PhoneCta'
 import { Reveal } from '@/components/ui/Reveal'
-import { assignedGoogleVoiceNumber } from '@/lib/phone'
 
-export function CallRashid() {
-  const assigned = assignedGoogleVoiceNumber()
+type CallRashidProps = {
+  assignedDigits: string | null
+}
 
+export function CallRashid({ assignedDigits }: CallRashidProps) {
   return (
     <section
       id="call-rashid"
@@ -20,12 +21,12 @@ export function CallRashid() {
             Call Rashid
           </h2>
           <p className="mt-5 max-w-[65ch] text-base leading-relaxed text-stone-600 dark:text-stone-400">
-            {assigned
+            {assignedDigits
               ? 'This preview is for insurance-storm roofing owners and operators. Use the Google Voice number below.'
               : 'This preview is for insurance-storm roofing owners and operators. The Google Voice number is not assigned yet, so the control does not dial.'}
           </p>
           <div className="mt-6">
-            <PhoneCta />
+            <PhoneCta assignedDigits={assignedDigits} />
           </div>
         </Reveal>
       </div>

@@ -7,21 +7,24 @@ import { FourStepFlow } from '@/components/sections/FourStepFlow'
 import { WhoItsFor } from '@/components/sections/WhoItsFor'
 import { TrialOffer } from '@/components/sections/TrialOffer'
 import { CallRashid } from '@/components/sections/CallRashid'
+import { assignedGoogleVoiceNumber } from '@/lib/phone-server'
 
 export default function Home() {
+  const assignedDigits = assignedGoogleVoiceNumber()
+
   return (
     <>
-      <Header />
+      <Header assignedDigits={assignedDigits} />
       <main id="main">
-        <Hero />
+        <Hero assignedDigits={assignedDigits} />
         <MissedCallProblem />
         <PacketWalkthrough />
         <FourStepFlow />
         <WhoItsFor />
         <TrialOffer />
-        <CallRashid />
+        <CallRashid assignedDigits={assignedDigits} />
       </main>
-      <Footer />
+      <Footer assignedDigits={assignedDigits} />
     </>
   )
 }

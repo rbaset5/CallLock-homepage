@@ -1,9 +1,8 @@
+import { formatDialableNumber, toE164 } from '@/lib/phone'
 import {
   blockedNationalNumber,
-  formatDialableNumber,
   resolveGoogleVoiceNumber,
-  toE164,
-} from '@/lib/phone'
+} from '@/lib/phone-server'
 
 function blockedFixtures() {
   const national = blockedNationalNumber()

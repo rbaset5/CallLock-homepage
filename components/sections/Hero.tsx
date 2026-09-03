@@ -6,7 +6,11 @@ import { HERO_HEADLINE } from '@/lib/content'
 import { revealTransition } from '@/lib/motion'
 import { motion, useReducedMotion } from 'framer-motion'
 
-export function Hero() {
+type HeroProps = {
+  assignedDigits: string | null
+}
+
+export function Hero({ assignedDigits }: HeroProps) {
   const reduce = useReducedMotion()
 
   return (
@@ -33,7 +37,7 @@ export function Hero() {
             already on a roof.
           </p>
           <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-            <PhoneCta />
+            <PhoneCta assignedDigits={assignedDigits} />
             <a
               href="#packet"
               className="inline-flex min-h-12 items-center justify-center rounded-md border border-trust bg-white px-4 text-sm font-semibold text-trust transition-transform hover:bg-stone-100 active:scale-[0.98] dark:border-stone-200 dark:bg-stone-900 dark:text-stone-100 dark:hover:bg-stone-800"

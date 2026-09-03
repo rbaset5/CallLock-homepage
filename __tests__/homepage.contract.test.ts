@@ -6,7 +6,7 @@ import {
   HERO_HEADLINE,
   PACKET_FIELDS,
 } from '@/lib/content'
-import { blockedNationalNumber } from '@/lib/phone'
+import { blockedNationalNumber } from '@/lib/phone-server'
 
 function collectSourceFiles(dir: string, files: string[] = []): string[] {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -67,6 +67,21 @@ describe('CallLock private preview homepage contract', () => {
       .join('\n')
     expect(allText).not.toContain(national)
     expect(allText).not.toContain(`1${national}`)
+  })
+
+  it('keeps the blocklist out of client modules', () => {
+    const clientFiles = collectSourceFiles(process.cwd()).filter((file) => {
+      if (!/\.(tsx|ts)$/.test(file)) return false
+      if (file.includes(`${path.sep}__tests__${path.sep}`)) return false
+      const text = fs.readFileSync(file, 'utf8')
+      return text.includes("'use client'") || text.includes('"use client"')
+    })
+    const clientText = clientFiles
+      .map((file) => fs.readFileSync(file, 'utf8'))
+      .join('\n')
+    expect(clientText).not.toMatch(/phone-server/)
+    expect(clientText).not.toMatch(/blockedNationalNumber/)
+    expect(clientText).not.toMatch(/assignedGoogleVoiceNumber/)
   })
 
   it('keeps Voice agent dialogue out of the hero', () => {
