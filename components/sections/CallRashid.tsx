@@ -1,8 +1,10 @@
 import { PhoneCta } from '@/components/ui/PhoneCta'
 import { Reveal } from '@/components/ui/Reveal'
-import { GOOGLE_VOICE_PENDING_LABEL } from '@/lib/content'
+import { assignedGoogleVoiceNumber } from '@/lib/phone'
 
 export function CallRashid() {
+  const assigned = assignedGoogleVoiceNumber()
+
   return (
     <section
       id="call-rashid"
@@ -18,12 +20,9 @@ export function CallRashid() {
             Call Rashid
           </h2>
           <p className="mt-5 max-w-[65ch] text-base leading-relaxed text-stone-600 dark:text-stone-400">
-            This preview is for insurance-storm roofing owners and operators.
-            The Google Voice number is not assigned yet, so the control does not
-            dial.
-          </p>
-          <p className="mt-4 font-medium text-stone-800 dark:text-stone-200">
-            {GOOGLE_VOICE_PENDING_LABEL}
+            {assigned
+              ? 'This preview is for insurance-storm roofing owners and operators. Use the Google Voice number below.'
+              : 'This preview is for insurance-storm roofing owners and operators. The Google Voice number is not assigned yet, so the control does not dial.'}
           </p>
           <div className="mt-6">
             <PhoneCta />

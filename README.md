@@ -34,4 +34,4 @@ npm run build
 The Google Voice number is not assigned. The page shows
 `[GOOGLE VOICE NUMBER PENDING]` as a disabled control that does not dial.
 `NEXT_PUBLIC_GOOGLE_VOICE_NUMBER` is read only when real digits exist. Do
-not set a private cell or +13126463816.
+not set a private cell or the blocked shop line.

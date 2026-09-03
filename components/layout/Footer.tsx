@@ -1,6 +1,9 @@
 import { PhoneCta } from '@/components/ui/PhoneCta'
+import { assignedGoogleVoiceNumber } from '@/lib/phone'
 
 export function Footer() {
+  const assigned = assignedGoogleVoiceNumber()
+
   return (
     <footer className="border-t border-stone-300 bg-stone-100 text-stone-700 dark:border-stone-800 dark:bg-stone-950 dark:text-stone-300">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
@@ -18,9 +21,11 @@ export function Footer() {
             <p className="text-sm font-semibold text-trust dark:text-stone-100">
               Call Rashid
             </p>
-            <p className="mt-3 text-sm leading-relaxed">
-              Google Voice is not assigned. The control below does not dial.
-            </p>
+            {assigned ? null : (
+              <p className="mt-3 text-sm leading-relaxed">
+                Google Voice is not assigned. The control below does not dial.
+              </p>
+            )}
             <div className="mt-4">
               <PhoneCta size="sm" />
             </div>

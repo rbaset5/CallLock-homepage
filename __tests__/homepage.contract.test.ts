@@ -6,6 +6,7 @@ import {
   HERO_HEADLINE,
   PACKET_FIELDS,
 } from '@/lib/content'
+import { blockedNationalNumber } from '@/lib/phone'
 
 function collectSourceFiles(dir: string, files: string[] = []): string[] {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -20,7 +21,10 @@ function collectSourceFiles(dir: string, files: string[] = []): string[] {
     const fullPath = path.join(dir, entry.name)
     if (entry.isDirectory()) {
       collectSourceFiles(fullPath, files)
-    } else if (/\.(tsx|ts|jsx|js|md|css)$/.test(entry.name)) {
+    } else if (
+      /\.(tsx|ts|jsx|js|md|css|example)$/.test(entry.name) ||
+      entry.name.startsWith('.env')
+    ) {
       files.push(fullPath)
     }
   }
@@ -54,8 +58,15 @@ describe('CallLock private preview homepage contract', () => {
     expect(sourceText).toMatch(/aria-disabled=["']true["']/)
     expect(sourceText).toMatch(/pointer-events-none/)
     expect(sourceText).not.toMatch(/href=["']tel:["']/)
-    expect(sourceText).not.toMatch(/13126463816/)
-    expect(sourceText).not.toMatch(/312[-.\s]?646[-.\s]?3816/)
+  })
+
+  it('does not write the blocked shop line as a contiguous literal', () => {
+    const national = blockedNationalNumber()
+    const allText = collectSourceFiles(process.cwd())
+      .map((file) => fs.readFileSync(file, 'utf8'))
+      .join('\n')
+    expect(allText).not.toContain(national)
+    expect(allText).not.toContain(`1${national}`)
   })
 
   it('keeps Voice agent dialogue out of the hero', () => {

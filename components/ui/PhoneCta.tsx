@@ -4,6 +4,7 @@ import { GOOGLE_VOICE_PENDING_LABEL } from '@/lib/content'
 import {
   assignedGoogleVoiceNumber,
   formatDialableNumber,
+  toE164,
 } from '@/lib/phone'
 import { cn } from '@/lib/utils'
 
@@ -47,7 +48,7 @@ export function PhoneCta({ className, size = 'lg' }: PhoneCtaProps) {
 
   return (
     <a
-      href={`tel:+${assigned}`}
+      href={`tel:${toE164(assigned)}`}
       className={cn(liveClassName, sizeClass, className)}
     >
       <span className="text-center">{formatDialableNumber(assigned)}</span>
