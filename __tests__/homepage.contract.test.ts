@@ -28,8 +28,12 @@ function collectSourceFiles(dir: string, files: string[] = []): string[] {
 }
 
 describe('CallLock private preview homepage contract', () => {
-  const sourceText = collectSourceFiles(process.cwd())
-    .filter((file) => !file.includes(`${path.sep}__tests__${path.sep}`))
+  const productFiles = collectSourceFiles(process.cwd()).filter(
+    (file) =>
+      !file.includes(`${path.sep}__tests__${path.sep}`) &&
+      /\.(tsx|ts|jsx|js|css)$/.test(file)
+  )
+  const sourceText = productFiles
     .map((file) => fs.readFileSync(file, 'utf8'))
     .join('\n')
 
@@ -47,10 +51,26 @@ describe('CallLock private preview homepage contract', () => {
 
   it('keeps the Google Voice CTA visibly pending and non-dialing', () => {
     expect(sourceText).toContain(GOOGLE_VOICE_PENDING_LABEL)
-    expect(sourceText).toMatch(/href=["']tel:["']/)
     expect(sourceText).toMatch(/aria-disabled=["']true["']/)
+    expect(sourceText).toMatch(/pointer-events-none/)
+    expect(sourceText).not.toMatch(/href=["']tel:["']/)
     expect(sourceText).not.toMatch(/13126463816/)
     expect(sourceText).not.toMatch(/312[-.\s]?646[-.\s]?3816/)
+  })
+
+  it('keeps Voice agent dialogue out of the hero', () => {
+    const heroSource = fs.readFileSync(
+      path.join(process.cwd(), 'components/sections/Hero.tsx'),
+      'utf8'
+    )
+    const flowSource = fs.readFileSync(
+      path.join(process.cwd(), 'components/sections/FourStepFlow.tsx'),
+      'utf8'
+    )
+    expect(heroSource).not.toMatch(/CallTranscript/)
+    expect(heroSource).not.toMatch(/Voice agent/)
+    expect(heroSource).toMatch(/EvidencePacket/)
+    expect(flowSource).toMatch(/CallTranscript/)
   })
 
   it('includes the required packet fields and flow steps', () => {

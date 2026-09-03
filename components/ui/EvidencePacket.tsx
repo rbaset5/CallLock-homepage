@@ -46,12 +46,16 @@ const fieldMeta: Record<
 
 type EvidencePacketProps = {
   className?: string
+  titleId?: string
 }
 
-export function EvidencePacket({ className }: EvidencePacketProps) {
+export function EvidencePacket({
+  className,
+  titleId = 'packet-visual-title',
+}: EvidencePacketProps) {
   return (
     <article
-      aria-labelledby="packet-visual-title"
+      aria-labelledby={titleId}
       className={cn(
         'rounded-md border border-stone-300 bg-stone-50 text-stone-800 shadow-[0_12px_40px_rgb(28_25_23_/_0.08)]',
         'dark:border-stone-700 dark:bg-stone-900 dark:text-stone-100 dark:shadow-[0_12px_40px_rgb(0_0_0_/_0.35)]',
@@ -60,7 +64,7 @@ export function EvidencePacket({ className }: EvidencePacketProps) {
     >
       <header className="border-b border-stone-300 px-5 py-4 dark:border-stone-700">
         <p
-          id="packet-visual-title"
+          id={titleId}
           className="text-sm font-semibold tracking-tight text-trust dark:text-stone-100"
         >
           Storm evidence packet

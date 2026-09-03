@@ -77,7 +77,7 @@ export function Header() {
             ))}
           </nav>
 
-          <div className="hidden xl:block">
+          <div className="hidden lg:block">
             <PhoneCta size="sm" />
           </div>
 

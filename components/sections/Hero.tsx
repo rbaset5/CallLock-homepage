@@ -1,6 +1,6 @@
 'use client'
 
-import { CallTranscript } from '@/components/ui/CallTranscript'
+import { EvidencePacket } from '@/components/ui/EvidencePacket'
 import { PhoneCta } from '@/components/ui/PhoneCta'
 import { HERO_HEADLINE } from '@/lib/content'
 import { revealTransition } from '@/lib/motion'
@@ -18,8 +18,8 @@ export function Hero() {
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 pb-16 sm:px-6 lg:grid-cols-12 lg:gap-12 lg:px-8 lg:pb-20">
         <motion.div
           className="lg:col-span-5"
-          initial={reduce ? false : { opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={false}
+          animate={reduce ? undefined : { opacity: 1, y: 0 }}
           transition={revealTransition}
         >
           <h1
@@ -45,11 +45,15 @@ export function Hero() {
 
         <motion.div
           className="lg:col-span-7"
-          initial={reduce ? false : { opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={false}
+          animate={reduce ? undefined : { opacity: 1, y: 0 }}
           transition={{ ...revealTransition, delay: reduce ? 0 : 0.08 }}
         >
-          <CallTranscript />
+          <p className="mb-3 text-sm font-medium text-stone-600 dark:text-stone-400">
+            Opened after a missed storm call. Fields stay empty until intake
+            lands.
+          </p>
+          <EvidencePacket titleId="hero-packet-title" />
         </motion.div>
       </div>
     </section>

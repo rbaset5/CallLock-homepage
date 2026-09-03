@@ -4,6 +4,7 @@ import {
   IconPhoto,
   IconPhoneCall,
 } from '@tabler/icons-react'
+import { CallTranscript } from '@/components/ui/CallTranscript'
 import { Reveal } from '@/components/ui/Reveal'
 import { FLOW_STEPS } from '@/lib/content'
 
@@ -50,6 +51,18 @@ export function FourStepFlow() {
             )
           })}
         </ol>
+        <Reveal className="mt-14 max-w-2xl" delay={0.08}>
+          <h3 className="text-lg font-semibold text-trust dark:text-stone-100">
+            How the inbound call is taken
+          </h3>
+          <p className="mt-2 max-w-[65ch] text-sm leading-relaxed text-stone-600 dark:text-stone-400">
+            A voice agent can run intake when the shop cannot pick up. This
+            script is mechanics only. The shop result is the packet.
+          </p>
+          <div className="mt-6">
+            <CallTranscript />
+          </div>
+        </Reveal>
       </div>
     </section>
   )

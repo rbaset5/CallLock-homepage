@@ -23,7 +23,7 @@ export function PacketWalkthrough() {
           </p>
         </Reveal>
         <Reveal className="mt-10" delay={0.06}>
-          <EvidencePacket />
+          <EvidencePacket titleId="walkthrough-packet-title" />
         </Reveal>
       </div>
     </section>
