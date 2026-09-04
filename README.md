@@ -8,7 +8,7 @@ form. Hero is the 4:12 / 4:19 / still-on-a-roof clock.
 - Next.js App Router
 - TypeScript
 - Tailwind CSS v4
-- Big Shoulders Display / Public Sans / IBM Plex Mono
+- Big Shoulders / Public Sans / IBM Plex Mono
 
 ## Local
 

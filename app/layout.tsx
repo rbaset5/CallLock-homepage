@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
-import { Big_Shoulders_Display, IBM_Plex_Mono, Public_Sans } from 'next/font/google'
+import { Big_Shoulders, IBM_Plex_Mono, Public_Sans } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 
-const display = Big_Shoulders_Display({
+const display = Big_Shoulders({
   subsets: ['latin'],
   weight: ['600', '700', '800'],
   display: 'swap',

@@ -8,8 +8,7 @@
   --color-ink-mute: #4a585e;
   --color-rule: #7f8c86;
   --color-lost: #c2186a;
-  --font-display: var(--font-big-shoulders), 'Big Shoulders Display',
-    sans-serif;
+  --font-display: var(--font-big-shoulders), 'Big Shoulders', sans-serif;
   --font-sans: var(--font-public-sans), 'Public Sans', sans-serif;
   --font-mono: var(--font-ibm-plex-mono), 'IBM Plex Mono', monospace;
 }
