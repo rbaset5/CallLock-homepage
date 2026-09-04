@@ -16,7 +16,7 @@ export function IssuedTo() {
           </ul>
         </div>
         <div>
-          <h3 className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-lost">
+          <h3 className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-ink">
             Not issued to
           </h3>
           <ul className="mt-4 space-y-2 text-sm leading-relaxed text-ink-mute">

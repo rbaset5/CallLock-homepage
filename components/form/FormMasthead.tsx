@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 const index = [
   { href: '#incident', label: 'A Incident' },
   { href: '#issues', label: 'B Issues' },
@@ -14,17 +12,10 @@ export function FormMasthead() {
   return (
     <header className="border-b border-rule">
       <div className="flex flex-wrap items-end justify-between gap-4 border-b border-paper-rule bg-paper-raised px-3 py-4 md:px-6">
-        <div className="flex items-center gap-3">
-          <span className="bg-ink px-2 py-1">
-            <Image
-              src="/logo.png"
-              alt="CallLock"
-              width={140}
-              height={42}
-              priority
-              className="h-7 w-auto"
-            />
-          </span>
+        <div className="flex flex-col gap-1">
+          <p className="font-display text-3xl font-extrabold tracking-tight text-ink">
+            CALLLOCK
+          </p>
           <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
             Field-issued claim form
           </p>
