@@ -1,37 +1,65 @@
-# CallLock Homepage (private preview branch)
+# CallLock homepage
 
-Private preview of the CallLock homepage for insurance-storm roofing owners
-and operators. Live `calllock.co` is not replaced by this branch.
+A redesign of the CallLock private-preview homepage. CallLock answers the hail
+and wind calls a roofing shop cannot reach, runs intake, and sends one evidence
+packet to the shop inbox.
 
-## Stack
-
-- Next.js 14 App Router
-- React 18
-- TypeScript
-- Tailwind CSS 3
-- Framer Motion
-
-## Local preview
+## Run it locally
 
 ```bash
 npm install
-npm run dev
+npm run dev -- --port 43711
 ```
 
-Open http://localhost:3000
+Then open http://127.0.0.1:43711.
 
-## Verification
+No environment variables, credentials, or services are needed. The page is
+static and renders entirely from content in `src/components/site`.
 
-```bash
-npm run typecheck
-npm run lint
-npm test
-npm run build
-```
+## Scripts
 
-## CTA note
+| Command         | What it does                          |
+| --------------- | ------------------------------------- |
+| `npm run dev`   | Dev server with hot reload            |
+| `npm run build` | Production build                      |
+| `npm start`     | Serve the production build            |
+| `npm run lint`  | ESLint, including the React Hooks rules |
 
-The Google Voice number is not assigned. The page shows
-`[GOOGLE VOICE NUMBER PENDING]` as a disabled control that does not dial.
-`NEXT_PUBLIC_GOOGLE_VOICE_NUMBER` is read only when real digits exist. Do
-not set a private cell or the blocked shop line.
+## Stack
+
+Next.js App Router, TypeScript, Tailwind CSS v4, and shadcn/ui for button
+primitives. Fonts load through `next/font`.
+
+## Design notes
+
+The palette comes from the weather the product exists for. Hail-filled clouds
+scatter green, so the paper is a cold green-grey (`#e8ebe4`) rather than a warm
+cream, over wet-slate ink (`#171a17`). The single accent (`#c9006a`) is the
+magenta a hail core throws on weather radar, and it is spent only on what is
+missing or lost: unanswered calls, the pending phone number, the packet stamp.
+
+Insurance work is document work, so the page is laid out as a field-issued claim
+form — lettered sections, a binder-spine gutter, and a hairline margin rule.
+Numbering appears only where sequence is real: the eight packet fields in the
+order intake asks for them, and the four steps of a call.
+
+Type is Big Shoulders (a condensed face built for Chicago municipal signage) for
+display, Public Sans (the US Web Design System face, so prose carries
+government-form DNA) for body, and IBM Plex Mono for field labels, timestamps,
+and form fill.
+
+The signature element is the packet in section B. As it scrolls into view it
+fills its labels top to bottom in intake order, then refuses to fill a single
+value — every value line stays ruled and empty, stamped `NO COMPLETED JOB
+SHOWN`. The preview's honesty constraint is the memorable moment rather than a
+disclaimer buried in small print.
+
+## Content constraints
+
+The live preview has rules that the design has to hold to:
+
+- No completed job, real claim, or real call record is shown anywhere.
+- Packet values stay empty and photo slots stay pending.
+- The Google Voice number is not assigned, so nothing on the page dials. The
+  phone number is drawn as an unfilled field in the same language as the packet.
+- The trial is $0 for 90 days, with no public rate card.
