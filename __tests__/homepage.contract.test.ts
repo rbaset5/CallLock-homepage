@@ -3,10 +3,11 @@ import path from 'path'
 import {
   FLOW_STEPS,
   GOOGLE_VOICE_PENDING_LABEL,
-  HERO_HEADLINE,
+  HERO_LINES,
+  HONESTY_STAMP,
   PACKET_FIELDS,
+  PACKET_VALUES,
 } from '@/lib/content'
-import { blockedNationalNumber } from '@/lib/phone-server'
 
 function collectSourceFiles(dir: string, files: string[] = []): string[] {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -22,7 +23,7 @@ function collectSourceFiles(dir: string, files: string[] = []): string[] {
     if (entry.isDirectory()) {
       collectSourceFiles(fullPath, files)
     } else if (
-      /\.(tsx|ts|jsx|js|md|css|example)$/.test(entry.name) ||
+      /\.(tsx|ts|jsx|js|md|css|mjs|example)$/.test(entry.name) ||
       entry.name.startsWith('.env')
     ) {
       files.push(fullPath)
@@ -31,117 +32,95 @@ function collectSourceFiles(dir: string, files: string[] = []): string[] {
   return files
 }
 
-describe('CallLock private preview homepage contract', () => {
+describe('CallLock hail-412 homepage contract', () => {
   const productFiles = collectSourceFiles(process.cwd()).filter(
     (file) =>
       !file.includes(`${path.sep}__tests__${path.sep}`) &&
-      /\.(tsx|ts|jsx|js|css)$/.test(file)
+      /\.(tsx|ts|jsx|js|css|mjs)$/.test(file)
   )
   const sourceText = productFiles
     .map((file) => fs.readFileSync(file, 'utf8'))
     .join('\n')
-
-  const pageSource = fs.readFileSync(
-    path.join(process.cwd(), 'app/page.tsx'),
-    'utf8'
-  )
-
-  it('uses the exact hero headline', () => {
-    expect(HERO_HEADLINE).toBe(
-      'When hail hits, the next truck gets the job you didn’t answer.'
-    )
-    expect(sourceText).toContain(HERO_HEADLINE)
+  it('uses the exact hail-412 hero lines', () => {
+    expect(HERO_LINES).toEqual([
+      'Hail stops at 4:12.',
+      'The phone starts at 4:19.',
+      'You are still on a roof.',
+    ])
+    for (const line of HERO_LINES) {
+      expect(sourceText).toContain(line)
+    }
   })
 
-  it('keeps the Google Voice CTA visibly pending and non-dialing', () => {
+  it('does not keep the retired hail headline', () => {
+    expect(sourceText).not.toMatch(/When hail hits/)
+  })
+
+  it('keeps Google Voice unfilled and never dials', () => {
     expect(sourceText).toContain(GOOGLE_VOICE_PENDING_LABEL)
-    expect(sourceText).toMatch(/aria-disabled=["']true["']/)
-    expect(sourceText).toMatch(/pointer-events-none/)
-    expect(sourceText).not.toMatch(/href=["']tel:["']/)
+    expect(sourceText).toMatch(/Unfilled/)
+    expect(sourceText).not.toMatch(/href=["']tel:/)
+    expect(sourceText).not.toMatch(/NEXT_PUBLIC_GOOGLE_VOICE_NUMBER/)
   })
 
-  it('does not write the blocked shop line as a contiguous literal', () => {
-    const national = blockedNationalNumber()
-    const allText = collectSourceFiles(process.cwd())
-      .map((file) => fs.readFileSync(file, 'utf8'))
-      .join('\n')
-    expect(allText).not.toContain(national)
-    expect(allText).not.toContain(`1${national}`)
-  })
-
-  it('keeps the blocklist out of client modules', () => {
-    const clientFiles = collectSourceFiles(process.cwd()).filter((file) => {
-      if (!/\.(tsx|ts)$/.test(file)) return false
-      if (file.includes(`${path.sep}__tests__${path.sep}`)) return false
-      const text = fs.readFileSync(file, 'utf8')
-      return text.includes("'use client'") || text.includes('"use client"')
-    })
-    const clientText = clientFiles
-      .map((file) => fs.readFileSync(file, 'utf8'))
-      .join('\n')
-    expect(clientText).not.toMatch(/phone-server/)
-    expect(clientText).not.toMatch(/blockedNationalNumber/)
-    expect(clientText).not.toMatch(/assignedGoogleVoiceNumber/)
-  })
-
-  it('keeps Voice agent dialogue out of the hero', () => {
-    const heroSource = fs.readFileSync(
-      path.join(process.cwd(), 'components/sections/Hero.tsx'),
-      'utf8'
+  it('has no private-preview phone-server or 3816 leftovers', () => {
+    expect(fs.existsSync(path.join(process.cwd(), 'lib/phone-server.ts'))).toBe(
+      false
     )
-    const flowSource = fs.readFileSync(
-      path.join(process.cwd(), 'components/sections/FourStepFlow.tsx'),
-      'utf8'
-    )
-    expect(heroSource).not.toMatch(/CallTranscript/)
-    expect(heroSource).not.toMatch(/Voice agent/)
-    expect(heroSource).toMatch(/EvidencePacket/)
-    expect(flowSource).toMatch(/CallTranscript/)
+    expect(fs.existsSync(path.join(process.cwd(), 'lib/phone.ts'))).toBe(false)
+    expect(
+      fs.existsSync(
+        path.join(process.cwd(), 'scripts/assert-client-bundle-scrub.cjs')
+      )
+    ).toBe(false)
+    expect(sourceText).not.toMatch(/phone-server/)
+    expect(sourceText).not.toMatch(/blockedNationalNumber/)
+    expect(sourceText).not.toMatch(/assignedGoogleVoiceNumber/)
+    expect(fs.existsSync(path.join(process.cwd(), 'pages'))).toBe(false)
+    expect(sourceText).not.toMatch(/38\s*16/)
   })
 
-  it('includes the required packet fields and flow steps', () => {
+  it('keeps packet values empty and photo slots pending', () => {
     for (const field of PACKET_FIELDS) {
       expect(sourceText).toContain(field)
     }
+    expect(PACKET_VALUES['Call time']).toBe('')
+    expect(PACKET_VALUES.Homeowner).toBe('')
+    expect(PACKET_VALUES['Property address']).toBe('')
+    expect(PACKET_VALUES['Loss type']).toBe('')
+    expect(PACKET_VALUES['Claim facts']).toBe('')
+    expect(PACKET_VALUES['Next action']).toBe('')
+    expect(PACKET_VALUES['Street photo']).toBe('Photo pending')
+    expect(PACKET_VALUES['Slope photo']).toBe('Photo pending')
+    expect(sourceText).toContain(HONESTY_STAMP)
+  })
+
+  it('includes the intake path and trial terms', () => {
     for (const step of FLOW_STEPS) {
       expect(sourceText).toContain(step.title)
     }
-    expect(sourceText).toMatch(/Photo pending/)
+    expect(sourceText).toContain('$0 for 90 days')
+    expect(sourceText).not.toMatch(/\$197/)
+    expect(sourceText).not.toMatch(/\$397/)
+    expect(sourceText).not.toMatch(/\$797/)
+    expect(sourceText).not.toMatch(/\$249/)
+    expect(sourceText).not.toMatch(/\$599/)
   })
 
-  it('orders homepage sections exactly', () => {
-    const order = [
-      '<Hero',
-      '<MissedCallProblem',
-      '<PacketWalkthrough',
-      '<FourStepFlow',
-      '<WhoItsFor',
-      '<TrialOffer',
-      '<CallRashid',
-      '<Footer',
-    ]
-    let lastIndex = -1
-    for (const name of order) {
-      const index = pageSource.indexOf(name)
-      expect(index).toBeGreaterThan(lastIndex)
-      lastIndex = index
-    }
-  })
-
-  it('scopes audience to insurance-storm roofing and excludes other trades', () => {
+  it('scopes the form to storm-roof intake, not HVAC overflow', () => {
+    expect(sourceText).toMatch(/storm-roof intake/i)
     expect(sourceText).toMatch(/insurance-storm roofing/i)
-    expect(sourceText).toMatch(/Water-loss restoration/)
-    expect(sourceText).toMatch(/General contractors/)
-    expect(sourceText).toMatch(/Retail roofing/)
+    expect(sourceText).toMatch(/Not a receptionist/)
+    expect(sourceText).toMatch(/missed-call overflow/)
+    expect(sourceText).toMatch(/HVAC receptionist overflow/)
     expect(sourceText).not.toMatch(/Mike's HVAC/)
-    expect(sourceText).not.toMatch(/ABC Plumbing/)
     expect(sourceText).not.toMatch(/service businesses/i)
   })
 
-  it('does not invent testimonials, logos, or unsupported metrics', () => {
+  it('does not invent testimonials, logos, or shop contact', () => {
     expect(sourceText).not.toMatch(/testimonial/i)
     expect(sourceText).not.toMatch(/Trusted by/i)
     expect(sourceText).not.toMatch(/99\.9%/)
-    expect(sourceText).not.toMatch(/\$450 captured/)
+    expect(sourceText).toMatch(/No shop contact/)
   })
 })
