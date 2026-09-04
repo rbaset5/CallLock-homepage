@@ -1,19 +1,33 @@
 import type { Metadata } from 'next'
-import { IBM_Plex_Sans } from 'next/font/google'
-import './globals.css'
+import { Big_Shoulders_Display, IBM_Plex_Mono, Public_Sans } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
+import './globals.css'
 
-const ibmPlexSans = IBM_Plex_Sans({
+const display = Big_Shoulders_Display({
+  subsets: ['latin'],
+  weight: ['600', '700', '800'],
+  display: 'swap',
+  variable: '--font-big-shoulders',
+})
+
+const sans = Public_Sans({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   display: 'swap',
-  variable: '--font-sans',
+  variable: '--font-public-sans',
+})
+
+const mono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  display: 'swap',
+  variable: '--font-ibm-plex-mono',
 })
 
 export const metadata: Metadata = {
-  title: 'CallLock private preview | Storm-roof intake and evidence packet',
+  title: 'CallLock | Hail stops at 4:12',
   description:
-    'Private preview for insurance-storm roofing owners and operators. Storm-roof intake that builds an evidence packet. Live calllock.co is unchanged.',
+    'Storm-roof intake and one evidence packet for insurance-storm roofing shops. Not a receptionist. Not missed-call overflow. $0 for 90 days.',
   authors: [{ name: 'CallLock' }],
   creator: 'CallLock',
   publisher: 'CallLock',
@@ -23,17 +37,13 @@ export const metadata: Metadata = {
     telephone: false,
   },
   robots: {
-    index: false,
-    follow: false,
-    googleBot: {
-      index: false,
-      follow: false,
-    },
+    index: true,
+    follow: true,
   },
   openGraph: {
-    title: 'CallLock private preview',
+    title: 'CallLock | Hail stops at 4:12',
     description:
-      'Private preview for insurance-storm roofing owners and operators. Live calllock.co is unchanged.',
+      'Storm-roof intake and one evidence packet. The phone starts at 4:19. You are still on a roof.',
     siteName: 'CallLock',
     locale: 'en_US',
     type: 'website',
@@ -46,11 +56,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${ibmPlexSans.variable} scroll-smooth`}>
-      <body className={`${ibmPlexSans.className} bg-stone-50 text-stone-800 antialiased dark:bg-stone-950 dark:text-stone-100`}>
+    <html
+      lang="en"
+      className={`${display.variable} ${sans.variable} ${mono.variable}`}
+    >
+      <body className="bg-paper font-sans text-ink antialiased">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-trust focus:shadow"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-paper-raised focus:px-3 focus:py-2 focus:font-mono focus:text-xs focus:uppercase focus:tracking-widest"
         >
           Skip to main content
         </a>

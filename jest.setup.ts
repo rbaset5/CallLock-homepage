@@ -1,3 +1,1 @@
-import '@testing-library/jest-dom'
-
-jest.mock('server-only', () => ({}))
+// Contract tests read source files. No DOM matchers required.

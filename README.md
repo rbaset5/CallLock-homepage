@@ -1,17 +1,16 @@
-# CallLock Homepage (private preview branch)
+# CallLock homepage (hail-412 keep)
 
-Private preview of the CallLock homepage for insurance-storm roofing owners
-and operators. Live `calllock.co` is not replaced by this branch.
+Live-replace keep for [calllock.co](https://calllock.co). Field-issued claim
+form. Hero is the 4:12 / 4:19 / still-on-a-roof clock.
 
 ## Stack
 
-- Next.js 14 App Router
-- React 18
+- Next.js App Router
 - TypeScript
-- Tailwind CSS 3
-- Framer Motion
+- Tailwind CSS v4
+- Big Shoulders Display / Public Sans / IBM Plex Mono
 
-## Local preview
+## Local
 
 ```bash
 npm install
@@ -29,9 +28,14 @@ npm test
 npm run build
 ```
 
-## CTA note
+Homepage HTML must contain `Hail stops at 4:12` and must not contain
+the retired hail-hits headline.
 
-The Google Voice number is not assigned. The page shows
-`[GOOGLE VOICE NUMBER PENDING]` as a disabled control that does not dial.
-`NEXT_PUBLIC_GOOGLE_VOICE_NUMBER` is read only when real digits exist. Do
-not set a private cell or the blocked shop line.
+## Product lock
+
+- Storm-roof intake and one evidence packet. Not HVAC receptionist overflow.
+- Google Voice is an unfilled pending field. Nothing on the page dials.
+- Packet values stay empty. Photo slots stay pending. Stamp:
+  `NO COMPLETED JOB SHOWN`.
+- Trial is $0 for 90 days. No public rate card.
+- No shop contact.
