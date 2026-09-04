@@ -34,10 +34,6 @@ export function Footer() {
           <span aria-hidden className="text-rule-strong">
             /
           </span>
-          <span>Private preview, not the live site</span>
-          <span aria-hidden className="text-rule-strong">
-            /
-          </span>
           <span className="flex items-center gap-2">
             Number pending
             <span className="size-2 rounded-full bg-core" aria-hidden />

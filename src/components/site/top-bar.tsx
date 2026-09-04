@@ -10,9 +10,6 @@ const links = [
 export function TopBar() {
   return (
     <header className="sticky top-0 z-50">
-      <p className="stencil bg-core px-5 py-1.5 text-center text-white sm:px-8">
-        Private preview — calllock.co is unchanged
-      </p>
       <div className="border-b border-ink bg-ink text-paper">
         <div className="mx-auto flex w-full max-w-320 items-center justify-between gap-6 px-5 py-3 sm:px-8 lg:px-10">
           <Link

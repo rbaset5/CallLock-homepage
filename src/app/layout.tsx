@@ -22,7 +22,7 @@ const plexMono = IBM_Plex_Mono({
 
 const title = "CallLock — storm-roof intake and one evidence packet";
 const description =
-  "CallLock answers the hail and wind calls a roofing shop cannot reach, runs intake, and sends one evidence packet to the shop inbox. Private preview.";
+  "CallLock answers the hail and wind calls a roofing shop cannot reach, runs intake, and sends one evidence packet to the shop inbox.";
 
 export const metadata: Metadata = {
   title,
