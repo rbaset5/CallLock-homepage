@@ -8,6 +8,7 @@ const display = Big_Shoulders({
   weight: ['600', '700', '800'],
   display: 'swap',
   variable: '--font-big-shoulders',
+  adjustFontFallback: false,
 })
 
 const sans = Public_Sans({
