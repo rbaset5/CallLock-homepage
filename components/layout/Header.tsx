@@ -1,154 +1,142 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/Button'
+import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
+import { PhoneCta } from '@/components/ui/PhoneCta'
+import { zIndex } from '@/lib/z-index'
+import { cn } from '@/lib/utils'
 
-export function Header() {
+const nav = [
+  { href: '#problem', label: 'Problem' },
+  { href: '#packet', label: 'Packet' },
+  { href: '#flow', label: 'Flow' },
+  { href: '#trial', label: 'Trial' },
+  { href: '#call-rashid', label: 'Call Rashid' },
+]
+
+type HeaderProps = {
+  assignedDigits: string | null
+}
+
+export function Header({ assignedDigits }: HeaderProps) {
+  const sentinelRef = useRef<HTMLDivElement>(null)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
+    const sentinel = sentinelRef.current
+    if (!sentinel) return
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsScrolled(!entry.isIntersecting)
+      },
+      { threshold: 1 }
+    )
+
+    observer.observe(sentinel)
+    return () => observer.disconnect()
   }, [])
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
-  }
-
   return (
-    <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/95 backdrop-blur-sm shadow-lg' 
-          : 'bg-transparent'
-      }`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
-    >
-      <div className="container-max">
-        <div className="flex items-center justify-between py-1 md:py-2">
-          {/* Logo */}
-          <div className="flex items-center">
-            <img 
-              src="/logo.png" 
-              alt="CallLock" 
-              className="w-20 sm:w-24 md:w-28 h-auto -my-3 md:-my-4"
-            />
-          </div>
+    <>
+      <div ref={sentinelRef} className="h-px w-full" aria-hidden="true" />
+      <header
+        className={cn(
+          'sticky top-0 border-b border-stone-200 bg-stone-50/95 backdrop-blur-sm',
+          'dark:border-stone-800 dark:bg-stone-950/95',
+          isScrolled && 'shadow-[0_8px_24px_rgb(28_25_23_/_0.08)]'
+        )}
+        style={{ zIndex: zIndex.stickyHeader }}
+      >
+        <p className="border-b border-stone-200 bg-stone-200/80 px-4 py-1.5 text-center text-xs text-stone-700 dark:border-stone-800 dark:bg-stone-900 dark:text-stone-300">
+          Private preview. Live calllock.co is unchanged.
+        </p>
+        <div className="mx-auto flex max-h-16 max-w-7xl items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:px-8">
+          <a href="#top" className="flex min-w-0 items-center gap-3">
+            <span className="rounded-md bg-zinc-950 px-2 py-1">
+              <Image
+                src="/logo.png"
+                alt="CallLock"
+                width={160}
+                height={48}
+                priority
+                className="h-8 w-auto"
+              />
+            </span>
+            <span className="hidden text-xs text-stone-500 xl:inline">
+              Private preview
+            </span>
+          </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <a 
-              href="#how-it-works" 
-              className="text-text hover:text-action transition-colors duration-200"
-            >
-              How It Works
-            </a>
-            <a 
-              href="#pricing" 
-              className="text-text hover:text-action transition-colors duration-200"
-            >
-              Pricing
-            </a>
-            <a 
-              href="#faq" 
-              className="text-text hover:text-action transition-colors duration-200"
-            >
-              FAQ
-            </a>
+          <nav aria-label="Primary" className="hidden items-center gap-6 lg:flex">
+            {nav.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="whitespace-nowrap text-sm text-stone-700 hover:text-trust dark:text-stone-300 dark:hover:text-white"
+              >
+                {item.label}
+              </a>
+            ))}
           </nav>
 
-          {/* Desktop CTA Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Button 
-              variant="outline" 
-              size="sm"
-            >
-              Book Demo
-            </Button>
-            <Button 
-              variant="primary" 
-              size="sm"
-            >
-              Start Free Pilot
-            </Button>
+          <div className="hidden lg:block">
+            <PhoneCta assignedDigits={assignedDigits} size="sm" />
           </div>
 
-          {/* Mobile Menu Button */}
           <button
-            onClick={toggleMobileMenu}
-            className="md:hidden flex flex-col items-center justify-center w-8 h-8 space-y-1"
-            aria-label="Toggle mobile menu"
+            type="button"
+            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-md lg:hidden"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-nav"
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            onClick={() => setIsMobileMenuOpen((open) => !open)}
           >
-            <span className={`w-6 h-0.5 bg-gray-600 transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
-            <span className={`w-6 h-0.5 bg-gray-600 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`w-6 h-0.5 bg-gray-600 transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+            <span
+              className={cn(
+                'h-0.5 w-5 bg-stone-700 transition-transform dark:bg-stone-200',
+                isMobileMenuOpen && 'translate-y-2 rotate-45'
+              )}
+            />
+            <span
+              className={cn(
+                'h-0.5 w-5 bg-stone-700 dark:bg-stone-200',
+                isMobileMenuOpen && 'opacity-0'
+              )}
+            />
+            <span
+              className={cn(
+                'h-0.5 w-5 bg-stone-700 transition-transform dark:bg-stone-200',
+                isMobileMenuOpen && '-translate-y-2 -rotate-45'
+              )}
+            />
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        <motion.div
-          initial={false}
-          animate={{
-            height: isMobileMenuOpen ? 'auto' : 0,
-            opacity: isMobileMenuOpen ? 1 : 0
-          }}
-          transition={{ duration: 0.3 }}
-          className="md:hidden overflow-hidden"
-        >
-          <div className="py-4 space-y-4 border-t border-gray-200">
-            {/* Mobile Navigation */}
-            <nav className="flex flex-col space-y-4">
-              <a 
-                href="#how-it-works" 
-                className="text-text hover:text-action transition-colors duration-200 py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                How It Works
-              </a>
-              <a 
-                href="#pricing" 
-                className="text-text hover:text-action transition-colors duration-200 py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Pricing
-              </a>
-              <a 
-                href="#faq" 
-                className="text-text hover:text-action transition-colors duration-200 py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                FAQ
-              </a>
+        {isMobileMenuOpen ? (
+          <div
+            id="mobile-nav"
+            className="border-t border-stone-200 px-4 py-4 lg:hidden dark:border-stone-800"
+          >
+            <nav className="flex flex-col gap-3" aria-label="Mobile">
+              {nav.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="py-1 text-sm text-stone-800 dark:text-stone-200"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ))}
             </nav>
-
-            {/* Mobile CTA Buttons */}
-            <div className="flex flex-col space-y-3 pt-4">
-              <Button 
-                variant="outline" 
-                size="sm"
-                className="w-full"
-              >
-                Book Demo
-              </Button>
-              <Button 
-                variant="primary" 
-                size="sm"
-                className="w-full"
-              >
-                Start Free Pilot
-              </Button>
+            <div className="mt-4">
+              <PhoneCta assignedDigits={assignedDigits} size="sm" className="w-full" />
             </div>
           </div>
-        </motion.div>
-      </div>
-    </motion.header>
+        ) : null}
+      </header>
+    </>
   )
 }

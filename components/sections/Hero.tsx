@@ -1,119 +1,63 @@
 'use client'
 
-import React from 'react'
-import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/Button'
-import { Placeholder } from '@/components/ui/Placeholder'
-import { CallLockProcessFlow } from '@/components/ui/CallLockProcessFlow'
+import { EvidencePacket } from '@/components/ui/EvidencePacket'
+import { PhoneCta } from '@/components/ui/PhoneCta'
+import { HERO_HEADLINE } from '@/lib/content'
+import { revealTransition } from '@/lib/motion'
+import { motion, useReducedMotion } from 'framer-motion'
 
-export function Hero() {
-  const demoPhone = process.env.NEXT_PUBLIC_DEMO_PHONE || '(###) ###-####'
+type HeroProps = {
+  assignedDigits: string | null
+}
+
+export function Hero({ assignedDigits }: HeroProps) {
+  const reduce = useReducedMotion()
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-bg to-white pt-20">
-      <div className="container-max">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Text Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center lg:text-left"
-          >
-            {/* Main Headline */}
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-trust mb-6 leading-none">
-              Stop Losing Prospects to Missed Calls
-            </h1>
-
-            {/* Sub-headline */}
-            <div className="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto lg:mx-0 leading-relaxed">
-              <p>Our intelligent text-back system engages 
-              every missed call in 30 seconds, captures the job details (with photos), and gives 
-              you a chance to win the revenue your competitors are scooping up.</p>
-            </div>
-
-            {/* Instant Demo CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="mb-8"
-            >
-              <p className="text-lg font-semibold text-trust mb-4">
-                See it live on your own phone right now.
-              </p>
-              <a 
-                href={`tel:${demoPhone.replace(/[^\d]/g, '')}`}
-                className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-action hover:text-action/80 transition-colors duration-200"
-              >
-                Call Our Instant Demo: {demoPhone}
-              </a>
-            </motion.div>
-
-            {/* Main CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12"
-            >
-              <Button variant="primary" size="lg" className="text-lg px-8 py-4">
-                Start Your Free 7-Day Pilot
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-4">
-                Book a Live Q&A Demo
-              </Button>
-            </motion.div>
-
-            {/* Value Promise Bar */}
-            <motion.div
-              initial={{ opacity: 1, y: 0 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0 }}
-              className="bg-white rounded-lg shadow-lg p-6 max-w-2xl mx-auto lg:mx-0 mt-8"
-            >
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 text-trust">
-                <div className="flex items-center gap-2">
-                  <span className="text-action text-xl">✓</span>
-                  <span className="font-semibold">Concierge Setup Included</span>
-                </div>
-                <div className="hidden sm:block w-px h-6 bg-border"></div>
-                <div className="flex items-center gap-2">
-                  <span className="text-action text-xl">✓</span>
-                  <span className="font-semibold">Month-to-Month</span>
-                </div>
-                <div className="hidden sm:block w-px h-6 bg-border"></div>
-                <div className="flex items-center gap-2">
-                  <span className="text-action text-xl">✓</span>
-                  <span className="font-semibold">Cancel Anytime</span>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Right Column - Process Flow Diagram */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="hidden lg:block"
-          >
-            <div className="relative">
-              <CallLockProcessFlow />
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Mobile Process Flow Diagram */}
+    <section
+      id="top"
+      aria-labelledby="hero-heading"
+      className="min-h-[100dvh] bg-stone-50 pt-8 dark:bg-stone-950 lg:pt-10"
+    >
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 pb-16 sm:px-6 lg:grid-cols-12 lg:gap-12 lg:px-8 lg:pb-20">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="lg:hidden mt-12"
+          className="lg:col-span-5"
+          initial={false}
+          animate={reduce ? undefined : { opacity: 1, y: 0 }}
+          transition={revealTransition}
         >
-          <div className="relative">
-            <CallLockProcessFlow />
+          <h1
+            id="hero-heading"
+            className="max-w-[18ch] text-4xl font-semibold tracking-tight text-trust md:text-5xl lg:text-6xl lg:leading-[1.08] dark:text-stone-50"
+          >
+            {HERO_HEADLINE}
+          </h1>
+          <p className="mt-5 max-w-[36ch] text-base leading-relaxed text-stone-600 dark:text-stone-400">
+            Storm-roof intake that builds an evidence packet while you are
+            already on a roof.
+          </p>
+          <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+            <PhoneCta assignedDigits={assignedDigits} />
+            <a
+              href="#packet"
+              className="inline-flex min-h-12 items-center justify-center rounded-md border border-trust bg-white px-4 text-sm font-semibold text-trust transition-transform hover:bg-stone-100 active:scale-[0.98] dark:border-stone-200 dark:bg-stone-900 dark:text-stone-100 dark:hover:bg-stone-800"
+            >
+              See the packet
+            </a>
           </div>
+        </motion.div>
+
+        <motion.div
+          className="lg:col-span-7"
+          initial={false}
+          animate={reduce ? undefined : { opacity: 1, y: 0 }}
+          transition={{ ...revealTransition, delay: reduce ? 0 : 0.08 }}
+        >
+          <p className="mb-3 text-sm font-medium text-stone-600 dark:text-stone-400">
+            Opened after a missed storm call. Fields stay empty until intake
+            lands.
+          </p>
+          <EvidencePacket titleId="hero-packet-title" />
         </motion.div>
       </div>
     </section>
