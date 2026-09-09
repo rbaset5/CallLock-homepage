@@ -1,3 +1,5 @@
+import { CALL_RASHID } from "@/lib/phone";
+
 export function Footer() {
   return (
     <footer className="border-t border-ink bg-paper-sunk">
@@ -34,10 +36,13 @@ export function Footer() {
           <span aria-hidden className="text-rule-strong">
             /
           </span>
-          <span className="flex items-center gap-2">
-            Number pending
+          <a
+            href={CALL_RASHID.tel}
+            className="flex items-center gap-2 transition-colors hover:text-ink"
+          >
+            {CALL_RASHID.display}
             <span className="size-2 rounded-full bg-core" aria-hidden />
-          </span>
+          </a>
         </p>
       </div>
     </footer>

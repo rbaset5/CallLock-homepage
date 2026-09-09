@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 
+import { CALL_RASHID } from "@/lib/phone";
 import { cn } from "@/lib/utils";
 
 export function Section({
@@ -96,10 +97,6 @@ export function SectionHead({
   );
 }
 
-/*
-  The one thing this preview cannot give you yet, drawn in the same unfilled-field
-  language as the packet's empty values.
-*/
 export function NumberPlate({
   tone = "paper",
   className,
@@ -108,25 +105,24 @@ export function NumberPlate({
   className?: string;
 }) {
   return (
-    <div
-      role="note"
-      aria-label="Phone number pending"
+    <a
+      href={CALL_RASHID.tel}
+      aria-label={`Call Rashid at ${CALL_RASHID.display}`}
       className={cn(
-        "w-full max-w-sm border bg-paper-raised",
-        tone === "ink" ? "border-paper" : "border-ink",
+        "block w-full max-w-sm border bg-paper-raised outline-none transition-colors",
+        "focus-visible:ring-2 focus-visible:ring-core focus-visible:ring-offset-2 focus-visible:ring-offset-paper",
+        tone === "ink" ? "border-paper hover:bg-paper" : "border-ink hover:bg-paper",
         className,
       )}
     >
       <p className="stencil bg-ink px-3 py-2 text-paper">Call Rashid</p>
       <div className="px-3 pt-3 pb-3.5">
-        <p className="border-b-2 border-dashed border-core pb-1.5 font-mono text-base italic text-ink-faint">
-          number pending
+        <p className="border-b-2 border-ink pb-1.5 font-mono text-base text-ink">
+          {CALL_RASHID.display}
         </p>
-        <p className="stencil mt-2.5 text-ink-faint">
-          Google Voice is not assigned. Nothing on this page dials.
-        </p>
+        <p className="stencil mt-2.5 text-ink-faint">Live. Dials Rashid.</p>
       </div>
-    </div>
+    </a>
   );
 }
 
