@@ -41,8 +41,8 @@ export function Trial() {
           <NumberPlate tone="ink" className="max-w-none" />
           <p className="mt-6 text-sm text-paper/65">
             The preview is open to insurance-storm roofing owners and operators.
-            The Google Voice number is not assigned yet, so there is nothing here
-            to dial. This plate is where it will go.
+            The number is live and dials Rashid. This plate is the Call Rashid
+            line, not a shop contact.
           </p>
         </div>
       </div>

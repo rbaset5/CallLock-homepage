@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { CALL_RASHID } from "@/lib/phone";
+
 const links = [
   { href: "/#loss", label: "loss" },
   { href: "/#packet", label: "packet" },
@@ -32,7 +34,12 @@ export function TopBar() {
                 </li>
               ))}
               <li className="hidden items-center gap-2 border-l border-paper/25 pl-6 md:flex">
-                <span className="stencil text-paper/50">Number pending</span>
+                <a
+                  href={CALL_RASHID.tel}
+                  className="stencil text-paper/80 transition-colors hover:text-paper"
+                >
+                  {CALL_RASHID.display}
+                </a>
                 <span className="size-2 rounded-full bg-core" aria-hidden />
               </li>
             </ul>

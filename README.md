@@ -36,7 +36,7 @@ The palette comes from the weather the product exists for. Hail-filled clouds
 scatter green, so the paper is a cold green-grey (`#e8ebe4`) rather than a warm
 cream, over wet-slate ink (`#171a17`). The single accent (`#c9006a`) is the
 magenta a hail core throws on weather radar, and it is spent only on what is
-missing or lost: unanswered calls, the pending phone number, the packet stamp.
+missing or lost: unanswered calls, the packet stamp.
 
 Insurance work is document work, so the page is laid out as a field-issued claim
 form — lettered sections, a binder-spine gutter, and a hairline margin rule.
@@ -60,6 +60,6 @@ The live preview has rules that the design has to hold to:
 
 - No completed job, real claim, or real call record is shown anywhere.
 - Packet values stay empty and photo slots stay pending.
-- The Google Voice number is not assigned, so nothing on the page dials. The
-  phone number is drawn as an unfilled field in the same language as the packet.
+- Call Rashid is live at (734) 331-0162 (`tel:+17343310162`). Header, footer,
+  and Call Rashid plates dial that number. There is no shop contact on the page.
 - The trial is $0 for 90 days, with no public rate card.
