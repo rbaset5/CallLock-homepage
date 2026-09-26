@@ -12,7 +12,7 @@ const items = [
   "Every call recorded, with logs, transcripts, and recordings on your dashboard",
   "Details pushed into your CRM if you use one",
   "Setup done for you, with about 100 test calls before it goes live, and we watch your calls for the first month or two",
-  "Later, it gets set up around your process: text-back to hang-ups, booking straight onto your calendar, live transfer, dispatch",
+  "Later, if your call volume calls for it, we can set it up around your process: text-back to hang-ups, booking straight onto your calendar, live transfer, dispatch",
 ];
 
 export function Included() {
