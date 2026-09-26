@@ -1,8 +1,7 @@
 # CallLock homepage
 
-A redesign of the CallLock private-preview homepage. CallLock answers the hail
-and wind calls a roofing shop cannot reach, runs intake, and sends one evidence
-packet to the shop inbox.
+CallLock answers the calls you miss, gets the caller's details, and sends them
+to you right away so you can lock in the job. For trade and service businesses.
 
 ## Run it locally
 
@@ -32,34 +31,12 @@ primitives. Fonts load through `next/font`.
 
 ## Design notes
 
-The palette comes from the weather the product exists for. Hail-filled clouds
-scatter green, so the paper is a cold green-grey (`#e8ebe4`) rather than a warm
-cream, over wet-slate ink (`#171a17`). The single accent (`#c9006a`) is the
-magenta a hail core throws on weather radar, and it is spent only on what is
-missing or lost: unanswered calls, the packet stamp.
+Paper is a cold green-grey (`#e8ebe4`) over ink (`#171a17`). The single accent
+(`#c9006a`) marks the live phone line. Type is Big Shoulders for display,
+Public Sans for body, and IBM Plex Mono for labels and figures.
 
-Insurance work is document work, so the page is laid out as a field-issued claim
-form — lettered sections, a binder-spine gutter, and a hairline margin rule.
-Numbering appears only where sequence is real: the eight packet fields in the
-order intake asks for them, and the four steps of a call.
+## Content
 
-Type is Big Shoulders (a condensed face built for Chicago municipal signage) for
-display, Public Sans (the US Web Design System face, so prose carries
-government-form DNA) for body, and IBM Plex Mono for field labels, timestamps,
-and form fill.
-
-The signature element is the packet in section B. As it scrolls into view it
-fills its labels top to bottom in intake order, then refuses to fill a single
-value — every value line stays ruled and empty, stamped `NO COMPLETED JOB
-SHOWN`. The preview's honesty constraint is the memorable moment rather than a
-disclaimer buried in small print.
-
-## Content constraints
-
-The live preview has rules that the design has to hold to:
-
-- No completed job, real claim, or real call record is shown anywhere.
-- Packet values stay empty and photo slots stay pending.
-- Call Rashid is live at (734) 331-0162 (`tel:+17343310162`). Header, footer,
-  and Call Rashid plates dial that number. There is no shop contact on the page.
-- The trial is $0 for 90 days, with no public rate card.
+Page copy lives in `src/components/site`. Call Rashid is live at (734) 331-0162
+(`tel:+17343310162`). The header, footer, and Call Rashid plates dial that
+number.

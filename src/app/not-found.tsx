@@ -6,11 +6,10 @@ import { TopBar } from "@/components/site/top-bar";
 import { Button } from "@/components/ui/button";
 
 const sections = [
-  { href: "/#loss", label: "The loss" },
-  { href: "/#packet", label: "The packet" },
-  { href: "/#call", label: "The call" },
-  { href: "/#fit", label: "The fit" },
-  { href: "/#trial", label: "The trial" },
+  { href: "/#how", label: "How it works" },
+  { href: "/#who", label: "Who it's for" },
+  { href: "/#pricing", label: "Pricing" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
 export default function NotFound() {
@@ -43,7 +42,7 @@ export default function NotFound() {
               <div className="px-4 py-4">
                 <dt className="stencil text-ink-faint">What is here</dt>
                 <dd className="mt-2 border-b border-dashed border-rule-strong pb-2 font-mono text-[0.9375rem] leading-6 text-ink">
-                  one page, five sections
+                  one page
                 </dd>
               </div>
             </dl>

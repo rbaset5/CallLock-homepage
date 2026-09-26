@@ -1,11 +1,10 @@
 @import "tailwindcss";
 
 /*
-  CallLock — storm-roof intake.
+  CallLock homepage.
 
-  Palette is taken from the weather this product exists for. Hail-filled clouds
-  scatter green, so the paper is a cold green-grey rather than a warm cream.
-  The single accent is the magenta a hail core throws on weather radar.
+  Paper is a cold green-grey, ink is near-black, and the single accent is
+  magenta. Display type is condensed; labels and figures are monospaced.
 */
 @theme {
   --color-paper: #e8ebe4;
@@ -126,10 +125,7 @@
   border-bottom: 1px solid var(--color-rule);
 }
 
-/*
-  A staggered shingle field: courses with tabs offset a half-tab each row,
-  the way a roof is actually laid.
-*/
+/* A staggered course texture used as a quiet page field. */
 @utility shingle-field {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='80' viewBox='0 0 300 80'%3E%3Cg fill='none' stroke='%23171a17'%3E%3Cpath stroke-width='3' stroke-opacity='.5' d='M0 2H300M0 42H300'/%3E%3Cpath stroke-width='1' d='M0 0.5H300M0 40.5H300'/%3E%3Cpath stroke-width='1' stroke-opacity='.45' d='M0.5 4V40M150.5 4V40M75.5 44V80M225.5 44V80'/%3E%3C/g%3E%3C/svg%3E");
   background-size: 300px 80px;

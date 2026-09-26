@@ -1,11 +1,13 @@
-import { Fit } from "@/components/site/fit";
+import { DoTheMath } from "@/components/site/do-the-math";
+import { Faq } from "@/components/site/faq";
+import { FinalCta } from "@/components/site/final-cta";
 import { Footer } from "@/components/site/footer";
 import { Hero } from "@/components/site/hero";
-import { Intake } from "@/components/site/intake";
-import { Loss } from "@/components/site/loss";
-import { Packet } from "@/components/site/packet";
+import { HowItWorks } from "@/components/site/how-it-works";
+import { Included } from "@/components/site/included";
+import { Pricing } from "@/components/site/pricing";
 import { TopBar } from "@/components/site/top-bar";
-import { Trial } from "@/components/site/trial";
+import { WhoItsFor } from "@/components/site/who-its-for";
 
 export default function Home() {
   return (
@@ -17,13 +19,15 @@ export default function Home() {
         Skip to content
       </a>
       <TopBar />
-      <main id="main" className="flex-1 scroll-mt-20">
+      <main id="main" className="flex-1 scroll-mt-32">
         <Hero />
-        <Loss />
-        <Packet />
-        <Intake />
-        <Fit />
-        <Trial />
+        <HowItWorks />
+        <WhoItsFor />
+        <DoTheMath />
+        <Pricing />
+        <Included />
+        <Faq />
+        <FinalCta />
       </main>
       <Footer />
     </>
