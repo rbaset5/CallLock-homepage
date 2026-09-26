@@ -3,10 +3,10 @@ import { Section, SectionHead } from "./primitives";
 const steps = [
   {
     title: "1. A call comes in and you can't answer.",
-    body: "You're under a sink, up a tree, or on another call. Your missed calls forward to CallLock and it picks up. You keep your own number. Use it for missed calls, after hours, and overflow, or run it 24/7 if you want. It can handle up to 10 calls at once.",
+    body: "You're under a sink, up a tree, or on another call. Your missed calls forward to CopperDesk and it picks up. You keep your own number. Use it for missed calls, after hours, and overflow, or run it 24/7 if you want. It can handle up to 10 calls at once.",
   },
   {
-    title: "2. CallLock handles the caller.",
+    title: "2. CopperDesk handles the caller.",
     body: "It answers as your business. It asks what the job is, the address, when they want it done, the caller's name, and the best number to reach them. It answers common questions using your business's own info, then tells the caller someone will reach out shortly. For emergencies, it can give the 911 line and ring several of your people at once.",
   },
   {
@@ -32,7 +32,7 @@ export function HowItWorks() {
       </ol>
 
       <p className="mt-8 max-w-3xl text-lg text-ink">
-        We start with missed calls. Once that&apos;s working, we set CallLock
+        We start with missed calls. Once that&apos;s working, we set CopperDesk
         up to fit how your shop quotes, dispatches, and follows up.
       </p>
     </Section>

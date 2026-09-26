@@ -12,7 +12,7 @@ export function Hero() {
 
         <div className="mt-10 grid items-end gap-10 border-t border-rule-strong pt-8 lg:mt-14 lg:grid-cols-[minmax(0,42rem)_minmax(0,20rem)] lg:gap-16 lg:pt-10">
           <p className="max-w-2xl text-xl leading-relaxed text-ink-soft sm:text-2xl">
-            CallLock picks up the calls you can&apos;t get to, gets the
+            CopperDesk picks up the calls you can&apos;t get to, gets the
             caller&apos;s name, address, and what they need, and sends it to you
             right away so you can lock in the job. It&apos;s for plumbers,
             electricians, tree crews, restoration shops, and anyone whose phone

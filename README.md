@@ -1,6 +1,6 @@
-# CallLock homepage
+# CopperDesk homepage
 
-CallLock answers the calls you miss, gets the caller's details, and sends them
+CopperDesk answers the calls you miss, gets the caller's details, and sends them
 to you right away so you can lock in the job. For trade and service businesses.
 
 ## Run it locally
@@ -12,8 +12,12 @@ npm run dev -- --port 43711
 
 Then open http://127.0.0.1:43711.
 
-No environment variables, credentials, or services are needed. The page is
-static and renders entirely from content in `src/components/site`.
+No credentials or services are needed. The page is static and renders entirely
+from content in `src/components/site`.
+
+`NEXT_PUBLIC_SITE_URL` is optional. Set it to the public origin when the domain
+is chosen. Canonical, `og:url`, and the sitemap then use that one value.
+Until it is set, in-page links stay relative and the sitemap lists no host.
 
 ## Scripts
 

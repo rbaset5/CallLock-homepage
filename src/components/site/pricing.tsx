@@ -37,7 +37,7 @@ export function Pricing() {
     <Section id="pricing" marker="Pricing" tone="sunk">
       <SectionHead
         title="Pricing"
-        lede="You pay for the minutes CallLock spends on the phone. Pick the plan that fits how many calls you miss. You can move up or down after you see a month of real calls."
+        lede="You pay for the minutes CopperDesk spends on the phone. Pick the plan that fits how many calls you miss. You can move up or down after you see a month of real calls."
       />
 
       <div className="mt-12 border border-ink bg-paper-raised">

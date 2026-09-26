@@ -13,7 +13,7 @@ export function Footer() {
       <div className="mx-auto w-full max-w-320 px-5 py-14 sm:px-8 lg:px-10">
         <div className="grid gap-10 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
           <div>
-            <p className="display text-4xl sm:text-5xl">CallLock</p>
+            <p className="display text-4xl sm:text-5xl">CopperDesk</p>
             <p className="mt-4 max-w-md text-lg text-ink-soft">
               Catch the calls you miss and win the job.
             </p>
@@ -33,7 +33,7 @@ export function Footer() {
         </div>
 
         <p className="stencil mt-12 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-rule-strong pt-6 text-ink-faint">
-          <span>© 2026 CallLock</span>
+          <span>© 2026 CopperDesk</span>
           <span aria-hidden className="text-rule-strong">
             ·
           </span>

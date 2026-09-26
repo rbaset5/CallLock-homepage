@@ -17,7 +17,7 @@ export function TopBar() {
           href="/"
           className="display text-2xl tracking-normal text-paper sm:text-[1.75rem]"
         >
-          CallLock
+          CopperDesk
         </Link>
         <a
           href={CALL_RASHID.tel}

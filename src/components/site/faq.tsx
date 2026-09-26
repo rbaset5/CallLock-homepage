@@ -7,7 +7,7 @@ const faqs = [
   },
   {
     q: "What if I already have a receptionist?",
-    a: "Keep them. CallLock picks up when they can't: lunch, after hours, weekends, or when two lines ring at once. You set when it steps in.",
+    a: "Keep them. CopperDesk picks up when they can't: lunch, after hours, weekends, or when two lines ring at once. You set when it steps in.",
   },
   {
     q: "Will it give callers prices?",
