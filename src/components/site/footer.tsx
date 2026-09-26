@@ -1,24 +1,25 @@
 import { CALL_RASHID } from "@/lib/phone";
 
+const links = [
+  { href: "/#how", label: "How it works" },
+  { href: "/#who", label: "Who it's for" },
+  { href: "/#pricing", label: "Pricing" },
+  { href: "/#faq", label: "FAQ" },
+];
+
 export function Footer() {
   return (
     <footer className="border-t border-ink bg-paper-sunk">
       <div className="mx-auto w-full max-w-320 px-5 py-14 sm:px-8 lg:px-10">
         <div className="grid gap-10 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
           <div>
-            <p className="display text-4xl sm:text-5xl">CallLock</p>
-            <p className="mt-4 max-w-md text-ink-soft">
-              Storm-roof intake and one evidence packet, for insurance-storm
-              roofing owners and operators.
+            <p className="display text-4xl sm:text-5xl">CopperDesk</p>
+            <p className="mt-4 max-w-md text-lg text-ink-soft">
+              Catch the calls you miss and win the job.
             </p>
           </div>
           <ul className="flex flex-wrap gap-x-7 gap-y-2">
-            {[
-              { href: "/#loss", label: "The loss" },
-              { href: "/#packet", label: "The packet" },
-              { href: "/#call", label: "The call" },
-              { href: "/#trial", label: "The trial" },
-            ].map((link) => (
+            {links.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
@@ -32,9 +33,9 @@ export function Footer() {
         </div>
 
         <p className="stencil mt-12 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-rule-strong pt-6 text-ink-faint">
-          <span>© 2026 CallLock</span>
+          <span>© 2026 CopperDesk</span>
           <span aria-hidden className="text-rule-strong">
-            /
+            ·
           </span>
           <a
             href={CALL_RASHID.tel}

@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Big_Shoulders, IBM_Plex_Mono, Public_Sans } from "next/font/google";
+
+import { getSiteUrl } from "@/lib/site";
+
 import "./globals.css";
 
 const bigShoulders = Big_Shoulders({
@@ -20,16 +23,26 @@ const plexMono = IBM_Plex_Mono({
   style: ["normal", "italic"],
 });
 
-const title = "CallLock — storm-roof intake and one evidence packet";
+const title = "CopperDesk: catch the calls you miss and win the job";
 const description =
-  "CallLock answers the hail and wind calls a roofing shop cannot reach, runs intake, and sends one evidence packet to the shop inbox.";
+  "CopperDesk answers the calls you miss, gets the caller's details, and sends them to you right away so you can lock in the job. For trade and service businesses.";
+
+const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
+  ...(siteUrl ? { metadataBase: siteUrl } : {}),
   title,
   description,
-  applicationName: "CallLock",
+  applicationName: "CopperDesk",
   robots: { index: false, follow: false },
-  openGraph: { title, description, siteName: "CallLock", type: "website" },
+  alternates: { canonical: "/" },
+  openGraph: {
+    title,
+    description,
+    siteName: "CopperDesk",
+    type: "website",
+    url: "/",
+  },
   twitter: { card: "summary", title, description },
 };
 

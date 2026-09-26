@@ -28,7 +28,7 @@ export function Section({
     <section
       id={id}
       className={cn(
-        "relative scroll-mt-20 overflow-hidden border-t",
+        "relative scroll-mt-32 overflow-hidden border-t",
         tone === "ink" ? "border-ink" : "border-rule-strong",
         tones[tone],
         className,
@@ -65,22 +65,29 @@ export function SectionHead({
   lede,
   tone = "paper",
 }: {
-  kicker: string;
+  kicker?: string;
   title: ReactNode;
   lede?: ReactNode;
   tone?: "paper" | "ink";
 }) {
   return (
     <header className="max-w-4xl">
-      <p
+      {kicker ? (
+        <p
+          className={cn(
+            "stencil",
+            tone === "ink" ? "text-paper/60" : "text-ink-faint",
+          )}
+        >
+          {kicker}
+        </p>
+      ) : null}
+      <h2
         className={cn(
-          "stencil",
-          tone === "ink" ? "text-paper/60" : "text-ink-faint",
+          "display text-(length:--text-h2) text-balance",
+          kicker && "mt-5",
         )}
       >
-        {kicker}
-      </p>
-      <h2 className="display mt-5 text-(length:--text-h2) text-balance">
         {title}
       </h2>
       {lede ? (
@@ -97,32 +104,41 @@ export function SectionHead({
   );
 }
 
-export function NumberPlate({
+export function CallRashid({
+  note,
   tone = "paper",
-  className,
 }: {
+  note: string;
   tone?: "paper" | "ink";
-  className?: string;
 }) {
   return (
-    <a
-      href={CALL_RASHID.tel}
-      aria-label={`Call Rashid at ${CALL_RASHID.display}`}
-      className={cn(
-        "block w-full max-w-sm border bg-paper-raised outline-none transition-colors",
-        "focus-visible:ring-2 focus-visible:ring-core focus-visible:ring-offset-2 focus-visible:ring-offset-paper",
-        tone === "ink" ? "border-paper hover:bg-paper" : "border-ink hover:bg-paper",
-        className,
-      )}
-    >
-      <p className="stencil bg-ink px-3 py-2 text-paper">Call Rashid</p>
-      <div className="px-3 pt-3 pb-3.5">
-        <p className="border-b-2 border-ink pb-1.5 font-mono text-base text-ink">
-          {CALL_RASHID.display}
-        </p>
-        <p className="stencil mt-2.5 text-ink-faint">Live. Dials Rashid.</p>
-      </div>
-    </a>
+    <div className="w-full max-w-sm">
+      <a
+        href={CALL_RASHID.tel}
+        className={cn(
+          "block border bg-paper-raised outline-none transition-colors",
+          "focus-visible:ring-2 focus-visible:ring-core focus-visible:ring-offset-2",
+          tone === "ink"
+            ? "border-paper hover:bg-paper focus-visible:ring-offset-ink"
+            : "border-ink hover:bg-paper focus-visible:ring-offset-paper",
+        )}
+      >
+        <p className="stencil bg-ink px-3 py-2 text-paper">Call Rashid</p>
+        <div className="px-3 pt-3 pb-3.5">
+          <p className="border-b-2 border-ink pb-1.5 font-mono text-base text-ink">
+            {CALL_RASHID.display}
+          </p>
+        </div>
+      </a>
+      <p
+        className={cn(
+          "mt-3 text-sm leading-relaxed",
+          tone === "ink" ? "text-paper/70" : "text-ink-soft",
+        )}
+      >
+        {note}
+      </p>
+    </div>
   );
 }
 
